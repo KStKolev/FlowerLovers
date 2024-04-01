@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace FlowerLovers.Controllers
+namespace FlowerLovers.Web.Controllers
 {
     public class HomeController : Controller
     {
