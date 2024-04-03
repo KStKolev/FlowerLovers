@@ -1,0 +1,6 @@
+﻿.front-image {
+    height: 600px;
+    width: 850px;
+    border: 5px double;
+    border-block-color: black; 
+}
