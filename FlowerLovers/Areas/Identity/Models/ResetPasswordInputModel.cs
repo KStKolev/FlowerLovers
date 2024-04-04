@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FlowerLovers.Web.Areas.Identity.Models
 {
-    public class InputModel
+    public class ResetPasswordInputModel
     {
         [Required]
         [EmailAddress]
