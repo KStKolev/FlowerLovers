@@ -19,7 +19,7 @@ namespace FlowerLovers.Web.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public ResetPasswordInputModel Input { get; set; }
 
         public IActionResult OnGet(string code = null)
         {
@@ -29,7 +29,7 @@ namespace FlowerLovers.Web.Areas.Identity.Pages.Account
             }
             else
             {
-                Input = new InputModel
+                Input = new ResetPasswordInputModel
                 {
                     Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
                 };
