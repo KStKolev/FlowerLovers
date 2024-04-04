@@ -1,6 +1,5 @@
 ﻿#nullable disable
 
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using FlowerLovers.Web.Areas.Identity.Models;
@@ -25,13 +24,6 @@ namespace FlowerLovers.Web.Areas.Identity.Pages.Account
 
         [BindProperty]
         public ForgotPasswordInputModel Input { get; set; }
-
-        public class InputModel
-        {
-            [Required]
-            [EmailAddress]
-            public string Email { get; set; }
-        }
 
         public async Task<IActionResult> OnPostAsync()
         {
