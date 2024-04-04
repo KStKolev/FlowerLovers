@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerLovers.Web", "FlowerLovers.Web.csproj", "{383E665E-D918-41DE-AEAE-CBBBA546B829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerLovers.Web", "FlowerLovers.Web.csproj", "{383E665E-D918-41DE-AEAE-CBBBA546B829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerLovers.Data", "..\FlowerLovers.Data\FlowerLovers.Data.csproj", "{38BD7390-203B-4365-B069-8C9D675394C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerLovers.Data", "..\FlowerLovers.Data\FlowerLovers.Data.csproj", "{38BD7390-203B-4365-B069-8C9D675394C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerLovers.Core", "..\FlowerLovers.Core\FlowerLovers.Core.csproj", "{D9F7873F-362F-4A8C-8447-892AE37FB9B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerLovers.Core", "..\FlowerLovers.Core\FlowerLovers.Core.csproj", "{D9F7873F-362F-4A8C-8447-892AE37FB9B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
