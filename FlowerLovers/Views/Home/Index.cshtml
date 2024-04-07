@@ -3,7 +3,57 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Flower Lovers</h1>
-    <img class="front-image" src="@Url.Content("~/Content/Images/flower_poster.jpg")"></img>
-    <p>This is a safe space for flower admirers of any kind and interest.</p>
+    <h1 class="home-title">Welcome to our blooming community of flower lovers!</h1>
+    <section class="carousel-container">
+        <div data-carousel>
+            <ul data-slides>
+                <li class="slide" data-active>
+                    <img src=@Url.Content("~/Content/Images/flower_poster.jpg") alt="first image">
+                </li>
+                <li class="slide">
+                    <img src=@Url.Content("~/Content/Images/flower_poster_2.jpg") alt="second image">
+                </li>
+                <li class="slide">
+                    <img src=@Url.Content("~/Content/Images/flower_poster_3.jpg") alt="third image">
+                </li>
+            </ul>
+            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
+            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+        </div>
+    </section>
+    <section class="about-us">
+        <h2>
+            ABOUT US
+        </h2>
+        <p>
+            At Flower Lovers, we are thrilled to extend a warm welcome to all the budding enthusiasts of the floral world. 
+            Whether you're an experienced gardener, a passionate florist, or simply someone who finds joy in the beauty of blooms, 
+            you've come to the perfect place to nurture your love for all things floral.
+        </p>
+        <p>
+            Our website is designed to be a vibrant sanctuary where you can immerse yourself in the colorful world of flowers. 
+            From tips on cultivating your own garden to expert advice on arranging stunning bouquets, 
+            we offer a plethora of resources to help you deepen your connection with nature's most exquisite creations.
+        </p>
+        <p>
+            Join our community forums to connect with fellow flower aficionados, share your gardening triumphs, 
+            seek advice for tricky floral arrangements, or simply swap stories about your favorite blooms. 
+            Whether you're a beginner or a seasoned pro, there's always something new to learn and explore together.
+        </p>
+        <p>
+            Browse through our curated galleries showcasing breathtaking floral photography from around the world, 
+            or dive into our articles and blog posts filled with inspiration and insights to fuel your passion for flowers.
+        </p>
+        <p>
+            We're committed to fostering a supportive and inclusive community where everyone feels welcome to share their love for flowers. 
+            So, come on in, take a stroll through our virtual garden, and let your love for all things floral blossom with us.
+        </p>
+        <p>
+            Thank you for joining us on this fragrant journey. 
+            Together, let's celebrate the enchanting world of flowers and spread a little more beauty and joy with every petal.
+        </p>
+        <p>
+            Happy blooming!
+        </p>
+    </section>
 </div>

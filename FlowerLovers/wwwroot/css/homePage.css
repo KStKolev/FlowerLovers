@@ -1,6 +1,100 @@
-﻿.front-image {
-    height: 600px;
-    width: 850px;
-    border: 5px double;
-    border-block-color: black; 
+﻿/*
+    home page text style
+*/
+.home-title, .about-us {
+    font-family: cursive;
+}
+
+/*
+    home title style
+*/
+
+.home-title {
+    width: 70%;
+    font-size: 3em;
+    margin: 1.5em auto 1.5em 4.1em;
+}
+
+/*
+    home images style
+*/
+
+.carousel-container {
+    position: relative;
+    text-align: center;
+    left: 1.5%;
+}
+
+.slide {
+    inset: 0;
+    opacity: 0;
+    transition: 200ms;
+    transition-delay: 200ms;
+    position: absolute;
+    left: -2.6%;
+}
+
+.slide[data-active] {
+    display: inline-block;
+    margin: 0 auto;
+    transition-delay: 0ms;
+    position: relative;
+    opacity: 1;
+}
+
+.slide > img {
+    width: 60em;
+    height: 40em;
+    border: 1px solid;
+    border-color: black;
+}
+
+/*
+    carousel button style
+*/
+
+.carousel-button {
+    cursor: pointer;
+    font-size: 5rem;
+    color: ghostwhite;
+    border: none;
+    background: none;
+    background-color: rgba(0, 0, 0, .1);
+    transition: ease-in-out 1s;
+    position: absolute;
+    z-index: 2;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, .2);
+    transition: ease-in-out 1s;
+    transform: translateY(-4%);
+}
+
+.carousel-button.prev {
+    top: 3.8em;
+    left: 18%;
+}
+
+.carousel-button.next {
+    top: 3.8em;
+    right: 21%;
+}
+
+/*
+    about us content style
+*/
+
+.about-us > h2 {
+    position: relative;
+    font-size: 2.5em;
+    margin: 2em auto 1em auto;
+}
+
+.about-us > p {
+    width: 60%;
+    font-size: 1em;
+    margin-top: 1em;
+    position: relative;
+    left: 20%;
 }
