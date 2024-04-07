@@ -1,7 +1,6 @@
 ﻿#nullable disable
 
 using FlowerLovers.Data.Data.Models;
-using FlowerLovers.Web.Areas.Identity.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
