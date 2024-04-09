@@ -4,27 +4,25 @@
 
 <div class="text-center">
     <h1 class="home-title">Welcome to our blooming community of flower lovers!</h1>
-    <section class="carousel-container">
-        <div data-carousel>
-            <ul data-slides>
-                <li class="slide" data-active>
-                    <img src=@Url.Content("~/Content/Images/flower_poster.jpg") alt="first image">
-                </li>
-                <li class="slide">
-                    <img src=@Url.Content("~/Content/Images/flower_poster_2.jpg") alt="second image">
-                </li>
-                <li class="slide">
-                    <img src=@Url.Content("~/Content/Images/flower_poster_3.jpg") alt="third image">
-                </li>
-            </ul>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+    <section class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slider">
+                <img id="img-1" src=@Url.Content("~/Content/Images/flower_poster_6.jpg") alt="first image">
+                <img id="img-2" src=@Url.Content("~/Content/Images/flower_poster_2.jpg") alt="second image">
+                <img id="img-3" src=@Url.Content("~/Content/Images/flower_poster_3.jpg") alt="third image">
+            </div>
+        </div>
+        <div class="slider-nav">
+            <a href="#img-1"></a>
+            <a href="#img-2"></a>
+            <a href="#img-3"></a>
         </div>
     </section>
     <section class="about-us">
         <h2>
             ABOUT US
         </h2>
+        <hr>
         <p>
             At Flower Lovers, we are thrilled to extend a warm welcome to all the budding enthusiasts of the floral world. 
             Whether you're an experienced gardener, a passionate florist, or simply someone who finds joy in the beauty of blooms, 
@@ -55,5 +53,21 @@
         <p>
             Happy blooming!
         </p>
+    </section>
+    <section class="join-us">
+        <div class="join-us title">
+            <h2>
+                Join us in our flower adventure!
+            </h2>
+            <hr>
+        </div>
+        <div class="join-us buttons">
+            <button class="register">
+                <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+            </button>
+            <button class="login">
+                <a asp-area="Identity" asp-page="/Account/Login">Log In</a>
+            </button>
+        </div>
     </section>
 </div>
