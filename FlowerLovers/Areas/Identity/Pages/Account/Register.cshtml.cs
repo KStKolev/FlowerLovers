@@ -45,6 +45,7 @@ namespace FlowerLovers.Web.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                UserStoreExtension.SetUserNames(user, Input.FirstName, Input.LastName);
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
