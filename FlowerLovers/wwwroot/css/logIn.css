@@ -29,7 +29,7 @@
 }
 
 /*
-    form stylesheets
+    form
 */
 
 #account {
@@ -37,18 +37,26 @@
 }
 
 /*
-    positioning for form and it's child elements
+    form and form's child elements position
 */
 
-#account > hr, .form-floating, #login-submit, .links > p {
+#account > hr, .login-password, .login-email, .log-in-button, .links > p {
     position: relative;
 }
+
+/*
+    form's hr
+*/
 
 #account > hr {
     left: 22%;
 }
 
-.form-floating {
+/*
+    login password and email
+*/
+
+.login-password, .login-email {
     width: 120%;
     padding: 0.5em;
     left: 12%;
@@ -66,9 +74,9 @@
     log in submission button
 */
 
-#login-submit {
-    left: 15%;
-    margin: 1em;
+.log-in-button {
+    margin: 1.5em;
+    left: 25%;
 }
 
 /*
@@ -76,7 +84,7 @@
 */
 
 .links > p {
-    left: 40%;
+    left: 45%;
 }
 
 .links > p > a {
@@ -87,15 +95,4 @@
 
 .links > p > a:hover {
     opacity: 0.5;
-}
-
-/*footer for both registration and log in*/
-
-.footer {
-    font-size: 1.2em;
-    text-align: center;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    position: relative;
 }

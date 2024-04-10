@@ -11,6 +11,12 @@
     transition: background-color 500ms ease-in;
 }
 
+.register-container > hr {
+    width: 55%;
+    position: relative;
+    left: 23%;
+}
+
 .register-container:hover {
     background-color: lightyellow;
 }
@@ -24,26 +30,59 @@
 }
 
 /*
+    registration first name and last name
+*/
+
+.usernames-container {
+    display: flex;
+    margin: 1.5em auto 1.5em auto;
+}
+
+.register-firstName, .register-lastName {
+    width: 38.55%;
+}
+
+.register-firstName {
+    margin-right: 1em;
+}
+
+/*
+    registration email, registration password, registration confirmed password
+*/
+
+.register-email, .register-password, .register-confirmPassword {
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+/*
     registration form
 */
 
-#registerForm {
-    width: 150%;
-}
-
-#registerForm > hr, .form-floating.register, #registerSubmit {
+#register-form {
     position: relative;
-    left: 50%;
-}
-
-#registerForm > hr {
-    width: 120%;
+    left: 10%;
 }
 
 /*
     registration button
 */
 
-#registerSubmit {
+.register-button {
+    width: 50%;
     margin: 1.5em;
+    position: relative;
+    left: 12%;
+}
+
+/*
+    footer registration and log in
+*/
+
+.footer {
+    font-size: 1.2em;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
 }

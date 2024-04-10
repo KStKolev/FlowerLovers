@@ -1,5 +1,5 @@
 ﻿/*
-    home page container style
+    home page container
 */
 
 .text-center, .join-us {
@@ -8,17 +8,17 @@
 }
 
 /*
-    home title style
+    home title
 */
 
 .home-title {
     width: 70%;
     font-size: 3em;
-    margin: 1.5em auto 1.5em 4em;
+    margin: 2.5em auto 0.8em 4em;
 }
 
 /*
-    home images style
+    home images
 */
 
 .slider-container {
@@ -41,22 +41,24 @@
 }
 
 .slider img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
     opacity: 0;
-    border-radius: 0.5rem;
     transition: opacity 0.5s ease-in-out;
+    position: absolute;
 }
 
 .slider img.active {
     opacity: 1;
 }
 
-/*nav buttons for images*/
+/*
+    nav buttons for images
+*/
 
 .slider-nav {
     display: flex;
@@ -82,11 +84,12 @@
 }
 
 /*
-    about us content style
+    about us content
 */
+
 .about-us {
-        margin: 4em;
-    }
+    margin: 4em;
+}
 
 .about-us > hr {
     height: 1.2px;
@@ -111,7 +114,7 @@
 }
 
 /* 
-    join us section 
+    join us content 
 */
 
 .join-us {
@@ -123,7 +126,7 @@
 }
 
 /*
-    join us title
+    join us title container
 */
 
 .join-us.title {
@@ -145,7 +148,9 @@
     left: 38%
 }
 
-/*join us buttons*/
+/*
+    join us buttons
+*/
 
 .join-us.buttons {
     margin: 3em 3em 3em 2em;
@@ -181,18 +186,9 @@
 }
 
 /*
-    footer style
+    home page's footer
 */
 
-.footer {
+footer > span {
     font-size: 1.2em;
-    text-align: center;
-}
-
-.container.footer > a {
-    transition: opacity 0.5s ease-in-out;
-}
-
-.container.footer > a:hover {
-    opacity: 0.5;
 }
