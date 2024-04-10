@@ -1,0 +1,49 @@
+﻿/*
+    registration container
+*/
+
+.register-container {
+    width: 65%;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 6em auto;
+    transition: background-color 500ms ease-in;
+}
+
+.register-container:hover {
+    background-color: lightyellow;
+}
+
+/*
+    registration header
+*/
+
+.register-container > h1 {
+    margin-top: 0.5em;
+}
+
+/*
+    registration form
+*/
+
+#registerForm {
+    width: 150%;
+}
+
+#registerForm > hr, .form-floating.register, #registerSubmit {
+    position: relative;
+    left: 50%;
+}
+
+#registerForm > hr {
+    width: 120%;
+}
+
+/*
+    registration button
+*/
+
+#registerSubmit {
+    margin: 1.5em;
+}
