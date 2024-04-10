@@ -1,5 +1,6 @@
 ﻿#nullable disable
 using System.ComponentModel.DataAnnotations;
+using static FlowerLovers.Web.Areas.Identity.DataRequirements.ResetPasswordInputDataConstants;
 
 namespace FlowerLovers.Web.Areas.Identity.Models
 {
@@ -10,13 +11,17 @@ namespace FlowerLovers.Web.Areas.Identity.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+        [StringLength(
+            PASSWORDMAXLENGTH, 
+            ErrorMessage = PASSWORDERRORMESSAGE, 
+            MinimumLength = PASSWORDMINLENGTH
+        )]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = CONFIRMPASSWORDERRORMESSAGE)]
         public string ConfirmPassword { get; set; }
 
         [Required]
