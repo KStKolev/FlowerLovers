@@ -17,8 +17,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
+// Use default static files from www.root folder.
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();

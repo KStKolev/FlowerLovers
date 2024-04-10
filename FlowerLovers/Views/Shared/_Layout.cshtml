@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/FlowerLovers.styles.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/homePage.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/css/homePage.css" asp-append-version="true" />
     </head>
     <body>
         <header>
@@ -37,14 +37,14 @@
                 @RenderBody()
             </main>
         </div>
-        <footer class="border-top footer text-muted">
+        <footer class="border-top footer">
             <div class="container footer">
-                &copy; 2024 - FlowerLovers - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; 2024 - FlowerLovers
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/carousel.js" asp-append-version="true"></script>
+        <script src="~/js/slider.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

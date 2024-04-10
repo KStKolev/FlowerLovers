@@ -1,0 +1,101 @@
+﻿/*
+    log in container
+*/
+
+.log-in-container {
+    width: 50%;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 4px;
+    margin: 2.5em auto 2em auto;
+    padding: 2em;
+    transition: background-color 500ms ease-in;
+}
+
+.log-in-container:hover {
+    background-color: lightyellow;
+}
+
+/*
+    container's child elements
+*/
+
+.log-in-container > div {
+    width: 100%;
+}
+
+.log-in-container > h1 {
+    text-align: center;
+}
+
+/*
+    form stylesheets
+*/
+
+#account {
+    width: 200%;
+}
+
+/*
+    positioning for form and it's child elements
+*/
+
+#account > hr, .form-floating, #login-submit, .links > p {
+    position: relative;
+}
+
+#account > hr {
+    left: 22%;
+}
+
+.form-floating {
+    width: 120%;
+    padding: 0.5em;
+    left: 12%;
+}
+
+/* 
+    remember me checkbox
+*/
+
+.checkbox {
+    margin: 1em auto auto 1em;
+}
+
+/*
+    log in submission button
+*/
+
+#login-submit {
+    left: 15%;
+    margin: 1em;
+}
+
+/*
+    registration and forgot password links
+*/
+
+.links > p {
+    left: 40%;
+}
+
+.links > p > a {
+    text-decoration: none;
+    color: black;
+    transition: opacity 500ms ease-in-out;
+}
+
+.links > p > a:hover {
+    opacity: 0.5;
+}
+
+/*footer for both registration and log in*/
+
+.footer {
+    font-size: 1.2em;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+}

@@ -40,7 +40,7 @@
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
 }
 
-.slider > img {
+.slider img {
     flex: 1 0 100%;
     scroll-snap-align: start;
     object-fit: cover;
@@ -84,7 +84,7 @@
 /*
     about us content style
 */
-    .about-us {
+.about-us {
         margin: 4em;
     }
 
@@ -160,12 +160,12 @@
     background-color: deeppink;
 }
 
-.register > a, .login > a {
+.register, .login, .container.footer > a {
     text-decoration: none;
     color: black;
 }
 
-.join-us.buttons > button {
+.join-us.buttons > a {
     font-size: 1.8em;
     border: none;
     border-radius: 4px;
@@ -173,7 +173,8 @@
     transition: 300ms ease-in-out;
 }
 
-.join-us.buttons > button:hover {
+.join-us.buttons > a:hover {
+    color: black;
     opacity: 0.8;
     transition: 300ms ease-in-out;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -182,7 +183,16 @@
 /*
     footer style
 */
-.container.footer {
+
+.footer {
     font-size: 1.2em;
     text-align: center;
+}
+
+.container.footer > a {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container.footer > a:hover {
+    opacity: 0.5;
 }

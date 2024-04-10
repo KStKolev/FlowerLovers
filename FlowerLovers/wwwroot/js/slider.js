@@ -10,15 +10,15 @@
         currentIndex = index;
     }
 
-    function clickNavigation(event) {
+    function navClickHandler(event) {
         event.preventDefault();
         const index = Array.from(navLinks).indexOf(event.target);
         showImage(index);
         clearInterval(intervalId);
-        intervalId = setInterval(nextImage, 6000);
+        intervalId = setInterval(nextImage, 3000);
     }
 
-    navLinks.forEach(link => link.addEventListener("click", clickNavigation));
+    navLinks.forEach(link => link.addEventListener("click", navClickHandler));
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);
@@ -26,8 +26,8 @@
 
     function startSlider() {
         images[0].classList.add('active');
-            // Change image every 6 seconds
-        intervalId = setInterval(nextImage, 6000);
+        intervalId = setInterval(nextImage, 3000);
     }
+
     startSlider();
 });
