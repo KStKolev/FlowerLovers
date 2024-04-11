@@ -1,7 +1,11 @@
+using FlowerLovers.Core.Contracts;
+using FlowerLovers.Core.Services.ApplicationUser;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity();
+builder.Services.AddTransient<IApplicationServiceUser, ApplicationServiceUser>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
