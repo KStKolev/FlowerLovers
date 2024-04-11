@@ -1,0 +1,62 @@
+﻿@model ApplicationUserModel
+
+@{
+    ViewData["Title"] = "Introducement"; 
+}
+
+<section class="introducement">
+    <div class="welcome-container">
+        <h1>
+            Hello, @Model.FullName!
+        </h1>
+        <h2>Welcome to Flower Lovers, our flower fantasy!</h2>
+        <hr>
+        <p>
+            We are a vibrant online community dedicated to enthusiasts of all things floral!
+            We're thrilled to have you join our blossoming family.
+        <p/>
+        <p>
+            Here, you'll find a sanctuary where your passion for flowers can flourish.
+            To ensure a harmonious environment for all members, we kindly ask that you familiarize yourself with our community guidelines.
+            Respect for fellow members, inclusivity, and positive engagement are at the core of our values.
+        <p/>
+        <p>
+            As a member, you have the right to express yourself freely while maintaining a respectful demeanor towards others.
+            We encourage you to share your love for flowers, exchange knowledge, and engage in meaningful discussions.
+            Let's cultivate a space where every bloom is celebrated and every member feels valued.
+            Welcome aboard!
+        </p>
+    </div>
+    <div class="rights-container">
+        <h3>
+            As a member of this community, you have the right to:
+        </h3>
+        <hr>
+        <ul>
+            <li>
+                1. Create, edit or delete an article of your creation.
+            </li>
+            <li>
+                2. Like, check for details and add/remove an article from your collection of favourites.
+            </li>
+            <li>
+                3. Follow as many flower lovers users as you want!
+            </li>
+            <li>
+                4. Customize your own profile account with information of your choosing.
+            <li>
+                5. Delete your profile account with every personal information behind it.
+            </li>
+        </ul>
+    </div>
+    <div class="consent-container">
+        <p>
+            As time passes, the rights will increase as well!
+            So be sure to check them from time to time, in case a new one comes out!
+        </p>
+        <p>
+            This button is sign of consent for your rights and obligations as a member of this community.
+        </p>
+        <a asp-area="" asp-controller="Home" asp-action="Index">I AGREE</a>
+    </div>
+</section>
