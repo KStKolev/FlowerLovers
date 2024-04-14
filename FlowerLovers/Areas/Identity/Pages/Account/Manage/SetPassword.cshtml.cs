@@ -1,7 +1,7 @@
 ﻿#nullable disable
 
+using FlowerLovers.Core.Services.Models.InputModel;
 using FlowerLovers.Data.Data.Models;
-using FlowerLovers.Web.Areas.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
