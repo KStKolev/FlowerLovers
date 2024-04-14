@@ -1,8 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
+﻿<div class="text-center">
     <h1 class="home-title">Welcome to our blooming community of flower lovers!</h1>
     <section class="slider-container">
         <div class="slider-wrapper">
@@ -62,8 +58,8 @@
             <hr>
         </div>
         <div class="join-us buttons">
-            <a class="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-            <a class="login" asp-area="Identity" asp-page="/Account/Login">Log In</a>
+                <a  class="register" asp-controller="Identity" asp-action="Register">Register</a>
+                <a  class="login" asp-controller="Identity" asp-action="LogIn">Login</a>
         </div>
     </section>
 </div>
