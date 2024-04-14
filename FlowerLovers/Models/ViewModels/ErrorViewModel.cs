@@ -1,4 +1,4 @@
-namespace FlowerLovers.Models
+namespace FlowerLovers.Web.Models.ViewModels
 {
     public class ErrorViewModel
     {
