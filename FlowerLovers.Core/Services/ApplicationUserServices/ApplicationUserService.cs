@@ -4,7 +4,7 @@ using FlowerLovers.Data.Data;
 using static FlowerLovers.Core.CustomExceptions.DataConstants.UserDataConstants;
 using static FlowerLovers.Core.CustomExceptions.DataConstants.NameDataConstants;
 
-namespace FlowerLovers.Core.Services.ApplicationUser
+namespace FlowerLovers.Core.Services
 {
     public class ApplicationServiceUser : IApplicationServiceUser
     {
