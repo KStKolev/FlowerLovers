@@ -17,5 +17,17 @@ namespace Microsoft.AspNetCore.Identity
             user.FirstName = firstName;
             user.LastName = lastName;
         }
+
+        public static void SetUserEmail(
+            ApplicationUser user, 
+            string email)
+        {
+            if (user == null || email == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            user.Email = email;
+        }
     }
 }

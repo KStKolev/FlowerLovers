@@ -24,6 +24,6 @@ namespace FlowerLovers.Core.Services.Models
         public string ConfirmPassword { get; set; } = string.Empty;
 
         [Required]
-        public string Code { get; set; } = string.Empty;
+        public string Token { get; set; } = string.Empty;
     }
 }

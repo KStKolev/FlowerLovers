@@ -13,16 +13,18 @@ namespace FlowerLovers.Core.Services.IdentityServices
     public class LogInService : PageModel, ILogInService
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public LogInService(SignInManager<ApplicationUser> signInManager)
+        public LogInService(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public async Task OnGetAsync(string returnUrl)
+        public async Task OnGetAsync()
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -30,14 +32,16 @@ namespace FlowerLovers.Core.Services.IdentityServices
             }
         }
 
-        public async Task<IActionResult> OnPostAsync(LogInModel model, string returnUrl)
+        public async Task<IActionResult> OnPostAsync(LogInModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
-                    return LocalRedirect("~/Home/Index");
+                    return RedirectToAction("LogIn", "Identity");
                 }
                 else
                 {

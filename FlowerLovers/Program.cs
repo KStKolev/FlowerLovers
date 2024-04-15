@@ -7,10 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity();
 builder.Services.AddTransient<IApplicationServiceUser, ApplicationUserService>();
-builder.Services.AddScoped<IRegisterService, RegisterService>();
-builder.Services.AddScoped<ILogInService, LogInService>();
-builder.Services.AddScoped<IResetPasswordService, ResetPasswordService>();
-builder.Services.AddScoped<IForgotPasswordService, ForgotPasswordService>();
+builder.Services.AddTransient<IRegisterService, RegisterService>();
+builder.Services.AddTransient<ILogInService, LogInService>();
+builder.Services.AddTransient<IResetPasswordService, ResetPasswordService>();
+builder.Services.AddTransient<IForgotPasswordService, ForgotPasswordService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

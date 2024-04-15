@@ -32,11 +32,11 @@
                 </div>
                 <div class="links">
                     <p>
-                        <a id="forgot-password" asp-controller="Identity" asp-action="Register">Forgot your password?</a>
+                        <a id="forgot-password" asp-controller="Identity" asp-action="ForgotPassword">Forgot your password?</a>
                     </p>
-                    @*<p>
-                                    <a asp-page="./Register" asp-route-returnUrl="@Url.Action("Identity", "Register", new { area = "" })">Register as a new user</a>
-                             </p> *@
+                    <p>
+                        <a asp-controller="Identity" asp-action="Register">Register as a new user</a>
+                    </p>
                 </div>
             </form>
         </div>

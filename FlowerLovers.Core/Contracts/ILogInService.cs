@@ -5,7 +5,7 @@ namespace FlowerLovers.Core.Contracts
 {
     public interface ILogInService
     {
-        public Task OnGetAsync(string returnUrl);
-        public Task<IActionResult> OnPostAsync(LogInModel model, string returnUrl);
+        public Task OnGetAsync();
+        public Task<IActionResult> OnPostAsync(LogInModel model);
     }
 }

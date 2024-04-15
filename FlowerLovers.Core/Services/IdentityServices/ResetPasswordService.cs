@@ -2,33 +2,21 @@
 using FlowerLovers.Core.Services.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Text;
 
 namespace FlowerLovers.Core.Services.IdentityServices
 {
     public class ResetPasswordService : PageModel, IResetPasswordService
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IEmailSender _emailSender;
 
-        public ResetPasswordService(UserManager<ApplicationUser> userManager)
+        public ResetPasswordService(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
-        }
-
-        public IActionResult OnGet(string code, ResetPasswordModel model)
-        {
-            if (code == null)
-            {
-                return BadRequest("A code must be supplied for password reset.");
-            }
-            else
-            {
-                model.Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-                return Page();
-            }
+            _emailSender = emailSender;
         }
 
         public async Task<IActionResult> OnPostAsync(ResetPasswordModel model)
@@ -40,23 +28,16 @@ namespace FlowerLovers.Core.Services.IdentityServices
 
             var user = await _userManager.FindByEmailAsync(model.Email);
 
-            if (user == null)
+            if (user != null)
             {
-                // Don't reveal that the user does not exist
-                return RedirectToPage("~/Identity/ResetPasswordConfirmation");
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var forgotPasswordLink = Url.Action("ResetPassword", "Identity", new { token, email = user.Email });
+                await _emailSender.SendEmailAsync(user.Email!, "Forgot Password link", forgotPasswordLink);
+                return RedirectToAction("ResetPassword", "Identity");
             }
 
-            var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToPage("~/Identity/ResetPasswordConfirmation");
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-            return Page();
+            // Don't reveal that the user does not exist
+            return RedirectToAction("Error", "Home");
         }
     }
 }

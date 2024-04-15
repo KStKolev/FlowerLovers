@@ -33,13 +33,16 @@ namespace FlowerLovers.Core.Services.IdentityServices
                 var user = CreateUser();
 
                 UserStoreExtension.SetUserNames(user, model.FirstName, model.LastName);
-                await _userStore.SetUserNameAsync(user, model.Email, CancellationToken.None);
+                UserStoreExtension.SetUserEmail(user, model.Email);
+                string fullName = model.FirstName + model.LastName;
+                await _userStore.SetUserNameAsync(user, fullName, CancellationToken.None);
+                
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect("~/Home/Index");
+                    return RedirectToAction("Register", "Identity");
                 }
                 foreach (var error in result.Errors)
                 {

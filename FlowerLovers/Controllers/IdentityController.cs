@@ -1,6 +1,5 @@
 ﻿using FlowerLovers.Core.Contracts;
 using FlowerLovers.Core.Services.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerLovers.Web.Controllers
@@ -25,75 +24,70 @@ namespace FlowerLovers.Web.Controllers
         }
 
         //Register 
-
         [HttpGet]
         public IActionResult Register() 
         {
-            return View();
+            RegisterModel model = new RegisterModel();
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model) 
         {
             await registerService.OnPostAsync(model);
-            return View(model);
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         // Log In
         [HttpGet]
-        public async Task<IActionResult> LogIn(string returnUrl) 
+        public async Task<IActionResult> LogIn() 
         {
-            await logInService.OnGetAsync(returnUrl);
+            LogInModel model = new LogInModel();
+            await logInService.OnGetAsync();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LogInModel model) 
+        {
+            await logInService.OnPostAsync(model);
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        // Forgot password
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> LogIn(LogInModel model, string returnUrl) 
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
-            await logInService.OnPostAsync(model, returnUrl);
-            return View(model);
+            await forgotPasswordService.OnPostAsync(model);
+            return RedirectToAction(nameof(ResetPassword), "Identity");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
+        {
+            await resetPasswordService.OnPostAsync(model);
+            return RedirectToAction(nameof(ResetPasswordConfirmation), "Identity");
         }
 
         // Reset Password
-
-        [Authorize]
         [HttpGet]
-        public IActionResult ResetPassword(string code, ResetPasswordModel model) 
+        public IActionResult ResetPassword() 
         {
-            resetPasswordService.OnGet(code, model);
-            return View(model);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> ResetPassword(ResetPasswordModel model) 
-        {
-            await resetPasswordService.OnPostAsync(model);
+            ResetPasswordModel model = new ResetPasswordModel();
             return View(model);
         }
 
         // Reset password confirmation
-        [Authorize]
         [HttpGet]
         public IActionResult ResetPasswordConfirmation() 
         {
             return View();
-        }
-
-        // Forgot password
-        [Authorize]
-        [HttpGet]
-        public IActionResult ForgotPassword() 
-        {
-            return View();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model) 
-        {
-            await forgotPasswordService.OnPostAsync(model);
-            return View(model);
         }
     }
 }
