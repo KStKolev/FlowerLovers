@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts;
 using FlowerLovers.Core.Services.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerLovers.Web.Controllers
@@ -10,17 +11,23 @@ namespace FlowerLovers.Web.Controllers
         private readonly IResetPasswordService resetPasswordService;
         private readonly ILogInService logInService;
         private readonly IForgotPasswordService forgotPasswordService;
+        private readonly ILogOutService logOutService;
+        private readonly IChangePasswordService changePasswordService;
 
         public IdentityController(IRegisterService _registerService,
                 ILogInService _logInService, 
                 IResetPasswordService _resetPasswordService,
-                IForgotPasswordService _forgotPasswordService
+                IForgotPasswordService _forgotPasswordService,
+                ILogOutService _logOutService,
+                IChangePasswordService _changePasswordService
             )
         {
             registerService = _registerService;
             logInService = _logInService;
             resetPasswordService = _resetPasswordService;
             forgotPasswordService = _forgotPasswordService;
+            logOutService = _logOutService;
+            changePasswordService = _changePasswordService;
         }
 
         //Register 
@@ -65,7 +72,15 @@ namespace FlowerLovers.Web.Controllers
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
             await forgotPasswordService.OnPostAsync(model);
-            return RedirectToAction(nameof(ResetPassword), "Identity");
+            return RedirectToAction("ResetPassword", "Identity");
+        }
+
+        // Reset Password
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            ResetPasswordModel model = new ResetPasswordModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -75,19 +90,37 @@ namespace FlowerLovers.Web.Controllers
             return RedirectToAction(nameof(ResetPasswordConfirmation), "Identity");
         }
 
-        // Reset Password
-        [HttpGet]
-        public IActionResult ResetPassword() 
-        {
-            ResetPasswordModel model = new ResetPasswordModel();
-            return View(model);
-        }
-
         // Reset password confirmation
         [HttpGet]
         public IActionResult ResetPasswordConfirmation() 
         {
             return View();
+        }
+
+        // Log out of account.
+        [Authorize]
+        public IActionResult LogOut() 
+        {
+            logOutService.OnPost();
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        // Change password of account.
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> ChangePassword() 
+        {
+            ChangePasswordModel model = new ChangePasswordModel();
+            await changePasswordService.OnGetAsync();
+            return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model) 
+        {
+            await changePasswordService.OnPostAsync(model);
+            return RedirectToAction(nameof(Index), "Identity");
         }
     }
 }
