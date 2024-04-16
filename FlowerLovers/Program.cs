@@ -11,6 +11,8 @@ builder.Services.AddTransient<IRegisterService, RegisterService>();
 builder.Services.AddTransient<ILogInService, LogInService>();
 builder.Services.AddTransient<IResetPasswordService, ResetPasswordService>();
 builder.Services.AddTransient<IForgotPasswordService, ForgotPasswordService>();
+builder.Services.AddTransient<ILogOutService, LogOutService>();
+builder.Services.AddTransient<IChangePasswordService, ChangePasswordService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
