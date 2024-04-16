@@ -2,7 +2,6 @@
 using FlowerLovers.Core.Services.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -11,12 +10,10 @@ namespace FlowerLovers.Core.Services.IdentityServices
     public class ResetPasswordService : PageModel, IResetPasswordService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IEmailSender _emailSender;
 
-        public ResetPasswordService(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
+        public ResetPasswordService(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
-            _emailSender = emailSender;
         }
 
         public async Task<IActionResult> OnPostAsync(ResetPasswordModel model)
@@ -31,8 +28,14 @@ namespace FlowerLovers.Core.Services.IdentityServices
             if (user != null)
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var forgotPasswordLink = Url.Action("ResetPassword", "Identity", new { token, email = user.Email });
-                await _emailSender.SendEmailAsync(user.Email!, "Forgot Password link", forgotPasswordLink);
+                var ResetPasswordResult = await _userManager.ResetPasswordAsync(user, token, model.Password);
+                if (!ResetPasswordResult.Succeeded) 
+                {
+                    foreach (var error in ResetPasswordResult.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                }
                 return RedirectToAction("ResetPassword", "Identity");
             }
 

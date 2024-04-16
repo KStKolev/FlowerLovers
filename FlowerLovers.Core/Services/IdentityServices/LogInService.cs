@@ -3,7 +3,6 @@
 using FlowerLovers.Core.Contracts;
 using FlowerLovers.Core.Services.Models;
 using FlowerLovers.Data.Data.Models;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
