@@ -5,7 +5,7 @@ namespace FlowerLovers.Core.Contracts
 {
     public interface IChangePasswordService
     {
-        public Task<IActionResult> OnGetAsync();
-        public Task<IActionResult> OnPostAsync(ChangePasswordModel model);
+        public Task<IActionResult> OnGetAsync(string userId);
+        public Task<IActionResult> OnPostAsync(ChangePasswordModel model, string userId);
     }
 }
