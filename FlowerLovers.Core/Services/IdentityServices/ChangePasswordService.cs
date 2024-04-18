@@ -4,7 +4,6 @@ using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Security.Claims;
 
 namespace FlowerLovers.Core.Services.IdentityServices
 {
@@ -22,9 +21,8 @@ namespace FlowerLovers.Core.Services.IdentityServices
             _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string userId)
         {
-            string userId = User.UserId();
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user == null)
@@ -34,14 +32,14 @@ namespace FlowerLovers.Core.Services.IdentityServices
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(ChangePasswordModel model)
+        public async Task<IActionResult> OnPostAsync(ChangePasswordModel model, string userId)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
