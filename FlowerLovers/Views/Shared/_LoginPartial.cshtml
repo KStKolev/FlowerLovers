@@ -4,6 +4,9 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        <li class="nav-item nav-personal-data">
+            <a asp-controller="Identity" asp-action="PersonalData">Personal Data</a>
+        </li>
         <li class="nav-item nav-change-password">
             <a asp-controller="Identity" asp-action="ChangePassword">Change password</a>
         </li>
