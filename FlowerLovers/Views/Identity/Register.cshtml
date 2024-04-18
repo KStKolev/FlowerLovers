@@ -1,0 +1,45 @@
+﻿@model RegisterModel
+
+<section class="register-container">
+    <h1 class="text-center">Create a new account</h1>
+    <hr />
+    <div>
+        <form id="register-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="usernames-container">
+                <div class="form-floating register-firstName">
+                    <input asp-for="FirstName" class="form-control" autocomplete="first-name" aria-required="true" />
+                    <label asp-for="FirstName">First name</label>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-floating register-lastName">
+                    <input asp-for="LastName" class="form-control" autocomplete="last-name" aria-required="true" />
+                    <label asp-for="LastName">Last name</label>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-floating register-email">
+                <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Email">Email Address</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating register-password">
+                <input asp-for="Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating register-confirmPassword">
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="register-button">
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

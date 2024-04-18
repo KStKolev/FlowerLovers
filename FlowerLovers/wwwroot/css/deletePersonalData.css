@@ -1,0 +1,62 @@
+﻿/*
+    delete personal data container.
+*/
+
+.delete-personal-data-container {
+    width: 50%;
+    border: 1px solid;
+    background-color: white;
+    border-radius: 4px;
+    margin-bottom: 10em;
+    position: relative;
+    top: 7em;
+    left: 25%;
+    transition: background-color 500ms ease-in-out;
+}
+
+.delete-personal-data-container:hover {
+    background-color: lightyellow;
+}
+
+/*
+    delete personal data container headers.
+*/
+
+
+.delete-personal-data-container > h1, .delete-personal-data-container > p {
+    text-align: center;
+}
+
+.delete-personal-data-container > h1 {
+    margin: 0.8em;
+}
+
+/*
+    delete personal data container form.
+*/
+
+.delete-personal-data-container > form {
+    width: 55%;
+    margin: 2em;
+    position: relative;
+    left: 19%;
+}
+
+/*
+    delete personal data container button.
+*/
+
+.delete-personal-data-container > form > button {
+    border: none;
+    border-radius: 4px;
+    margin: 2em;
+    padding: 1.5em;
+    background-color: red;
+    transition: 300ms ease-in-out;
+}
+
+.delete-personal-data-container > form > button:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}

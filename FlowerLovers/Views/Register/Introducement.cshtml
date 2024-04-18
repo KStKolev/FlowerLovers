@@ -1,8 +1,5 @@
 ﻿@model ApplicationUserModel
-
-@{
-    ViewData["Title"] = "Introducement"; 
-}
+@inject SignInManager<ApplicationUser> SignInManager
 
 <section class="introducement">
     <div class="welcome-container">
@@ -53,10 +50,7 @@
         <p>
             As time passes, the rights will increase as well!
             So be sure to check them from time to time, in case a new one comes out!
-        </p>
-        <p>
-            This button is sign of consent for your rights and obligations as a member of this community.
-        </p>
-        <a asp-area="" asp-controller="Home" asp-action="Index">I AGREE</a>
+        </p>        
+        <a asp-controller="Home" asp-action="Index">CONTINUE</a>
     </div>
 </section>

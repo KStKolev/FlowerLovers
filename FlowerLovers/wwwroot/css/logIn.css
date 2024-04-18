@@ -7,8 +7,11 @@
     background-color: white;
     border: 1px solid;
     border-radius: 4px;
-    margin: 2.5em auto 2em auto;
+    margin-bottom: 8em;
     padding: 2em;
+    position: relative;
+    top: 6.5em;
+    left: 26%;
     transition: background-color 500ms ease-in;
 }
 
@@ -84,7 +87,7 @@
 */
 
 .links > p {
-    left: 45%;
+    left: 54%;
 }
 
 .links > p > a {

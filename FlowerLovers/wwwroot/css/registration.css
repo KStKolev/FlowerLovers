@@ -7,8 +7,11 @@
     background-color: white;
     border: 1px solid;
     border-radius: 4px;
-    margin: 6em auto;
+    margin-bottom: 8em;
     transition: background-color 500ms ease-in;
+    position:relative;
+    top: 6.5em;
+    left: 18%;
 }
 
 .register-container > hr {
@@ -26,6 +29,7 @@
 */
 
 .register-container > h1 {
+    border:none;
     margin-top: 0.5em;
 }
 
@@ -39,7 +43,7 @@
 }
 
 .register-firstName, .register-lastName {
-    width: 38.55%;
+    width: 39%;
 }
 
 .register-firstName {

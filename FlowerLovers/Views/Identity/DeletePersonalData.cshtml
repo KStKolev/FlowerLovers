@@ -1,0 +1,24 @@
+﻿@model DeletePersonalDataModel
+
+<section class="delete-personal-data-container">
+    <h1>Delete Personal Data</h1>
+    <p>
+        <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+    </p>
+    <form id="delete-user" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.RequirePassword)
+        {
+            <div class="form-floating delete-personal-data-input">
+                <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                <label asp-for="Password" class="form-label"></label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        }
+        <button type="submit">Delete and remove account</button>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

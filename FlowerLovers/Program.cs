@@ -1,11 +1,20 @@
 using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.ApplicationUser;
+using FlowerLovers.Core.Services.ApplicationUserService;
+using FlowerLovers.Core.Services.IdentityServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity();
-builder.Services.AddTransient<IApplicationServiceUser, ApplicationServiceUser>();
+builder.Services.AddTransient<IApplicationServiceUser, ApplicationUserService>();
+builder.Services.AddTransient<IRegisterService, RegisterService>();
+builder.Services.AddTransient<ILogInService, LogInService>();
+builder.Services.AddTransient<IResetPasswordService, ResetPasswordService>();
+builder.Services.AddTransient<IForgotPasswordService, ForgotPasswordService>();
+builder.Services.AddTransient<ILogOutService, LogOutService>();
+builder.Services.AddTransient<IChangePasswordService, ChangePasswordService>();
+builder.Services.AddTransient<IPersonalDataService, PersonalDataService>();
+builder.Services.AddTransient<IDeletePersonalDataService, DeletePersonalDataService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
