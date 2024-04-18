@@ -1,0 +1,67 @@
+﻿/*
+    personal-data container
+*/
+
+.personal-data-container {
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: white;
+    width: 60%;
+    margin-bottom: 15em;
+    position: relative;
+    top: 10em;
+    left: 18%;
+    transition: background-color 500ms ease-in-out;
+}
+
+.personal-data-container:hover {
+    background-color: lightyellow;
+}
+
+/*
+    personal-data header
+*/
+
+.personal-data-container > h1 {
+    margin: 0.5em;
+    text-align: center;
+}
+
+/*
+    personal-data hr
+*/
+
+.personal-data-container > hr {
+    width: 28%;
+    position: relative;
+    left: 36%;
+}
+
+/*
+    personal-data content
+*/
+
+.personal-data-content {
+    margin-bottom: 7em;
+}
+
+.personal-data-content > p {
+    text-align: center;
+}
+
+.personal-data-content > a {
+    padding: 2em;
+    border-radius: 4px;
+    background-color: red;
+    position: relative;
+    top: 2.5em;
+    left: 43%;
+    opacity: 0.75;
+    transition: 300ms ease-in-out;
+}
+
+.personal-data-content > a:hover {
+    opacity: 1;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: 300ms ease-in-out
+}
