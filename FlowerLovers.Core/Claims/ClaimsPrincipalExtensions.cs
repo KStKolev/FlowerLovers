@@ -9,7 +9,7 @@
             {
                 throw new ArgumentNullException(nameof(claim));
             }
-            return claim.FindFirstValue(ClaimTypes.NameIdentifier);
+            return claim.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
     }
 }
