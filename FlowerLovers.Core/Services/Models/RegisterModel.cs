@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static FlowerLovers.Core.Services.Models.InputModel.DataRequirements.RegisterInputDataConstants;
+using static FlowerLovers.Core.Services.Models.DataRequirements.RegisterInputDataConstants;
 using static FlowerLovers.Data.Data.DataRequirements.ApplicationUserDataConstants;
 
 

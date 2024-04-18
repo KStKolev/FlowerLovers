@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static FlowerLovers.Core.Services.Models.InputModel.DataRequirements.ResetPasswordInputDataConstants;
+using static FlowerLovers.Core.Services.Models.DataRequirements.ResetPasswordInputDataConstants;
 
 namespace FlowerLovers.Core.Services.Models
 {
