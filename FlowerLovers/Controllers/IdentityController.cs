@@ -1,5 +1,5 @@
-﻿using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+﻿using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
@@ -47,8 +47,13 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model) 
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             await registerService.OnPostAsync(model);
             return RedirectToAction(nameof(Index), "Home");
         }
@@ -63,8 +68,13 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogIn(LogInModel model) 
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             await logInService.OnPostAsync(model);
             return RedirectToAction(nameof(Index), "Home");
         }
@@ -77,8 +87,13 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             await forgotPasswordService.OnPostAsync(model);
             return RedirectToAction("ResetPassword", "Identity");
         }
@@ -92,8 +107,13 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             await resetPasswordService.OnPostAsync(model);
             return RedirectToAction(nameof(ResetPasswordConfirmation), "Identity");
         }
