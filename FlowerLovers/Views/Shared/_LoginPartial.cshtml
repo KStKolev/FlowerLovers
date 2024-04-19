@@ -14,7 +14,7 @@
             <a asp-controller="Register" asp-action="Introducement">Introducement</a>
         </li>
         <li class="nav-item">
-            <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello, @User.Identity?.Name</a>
+            <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="UserPage" title="Manage">User</a>
         </li>
         <li class="nav-item">
             <form id="logoutForm" class="form-inline" asp-controller="Identity" asp-action="LogOut">
