@@ -14,9 +14,8 @@ namespace FlowerLovers.Data.Data.Models
             MinimumLength = USERNAMEMINLENGTH)]
         public string Username { get; set; } = string.Empty;
 
-        [Display(Name = "Image ID")]
-
-        public Image? Image { get; set; }
+        [Display(Name = "Image URL")]
+        public string ImageUrl { get; set; } = string.Empty;
 
         [StringLength(BIOGRAPHYMAXLENGTH)]
         public string Biography { get; set; } = string.Empty;
@@ -27,16 +26,5 @@ namespace FlowerLovers.Data.Data.Models
 
         public IEnumerable<Article> Articles { get; set; } =
             new List<Article>();
-
-        public IEnumerable<Comment> Comments { get; set; } = 
-            new List<Comment>();
-
-        //Many-to-Many relationship collections
-
-        public IEnumerable<UserAccount> FollowedUserAccount { get; set; } =
-            new List<UserAccount>();
-
-        public IEnumerable<UserAccount> FollowerUserAccount { get; set; } = 
-            new List<UserAccount>();
     }
 }
