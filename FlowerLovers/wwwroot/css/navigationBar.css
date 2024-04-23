@@ -2,46 +2,90 @@
     navigation bar
 */
 
-.navbar {
+.nav-display {
     width: 100%;
-    position: fixed;
-    z-index: 1;
+    height: 60px;
     background-color: lightgoldenrodyellow;
+    position: fixed;
+    z-index: 1000;
     box-shadow: 2px 1px 5px rgb(8, 8, 8);
-    transition: 0.3s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
-/*
-    navigation bar position transform
-*/
+.nav-list {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+}
 
 .nav-hidden {
-    transform: translateY(-67px);
+    transform: translateY(-60px);
 }
 
 /*
-    logo
+    navigation bar logo
 */
 
-.logo {
+.nav-logo > img {
     width: 50px;
-    height: 50px;
-    margin: auto 1.5em auto 0.5em;
-}
-
-/*
-    navigation elements
-*/
-
-.nav-item {
-    margin-right: 1em;
-}
-
-/*
-    navigation change password and introducement elements
-*/
-
-.nav-change-password, .nav-introducement {
     position: relative;
-    top: 0.5em;
+    bottom: 0.6em;
+    right: 40%;
+}
+
+
+/*
+    navigation bar elements
+*/
+
+.nav-list > li {
+    margin: 1em 8em auto 0;
+    position: relative;
+    left: 2.5%;
+}
+
+.nav-user {
+    position: relative;
+}
+
+.nav-logOut {
+    position: relative;
+    bottom: 15%;
+}
+
+.nav-register, .nav-logIn {
+    position:relative;
+    bottom: 0.5em;
+}
+
+/*
+    dropdown-menu
+*/
+.dropdown-menu {
+    display: block;
+    background-color: lightgoldenrodyellow;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -25px;
+    position: absolute;
+    left: -3.5em;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.nav-user:hover .dropdown-menu {
+    margin-top: 0px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+}
+
+.dropdown-menu li:hover {
+    background-color: lightyellow;
+    transition: 0.5s ease-in-out;
 }

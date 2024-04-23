@@ -1,6 +1,6 @@
 // Create scrolling functionality for navigation bar.
 
-const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector(".nav-display");
 let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
