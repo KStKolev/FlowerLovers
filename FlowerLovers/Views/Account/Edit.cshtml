@@ -1,0 +1,20 @@
+﻿@model EditAccountModel
+
+<section class="edit-account-section">
+    <h1>Edit Account</h1>
+    <hr/>
+    <div class="edit-account-form">
+        <form asp-action="Edit" asp-controller="Account" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="image-edit-container">
+                <input asp-for="ImageFile" class="form-control" placeholder="Image file" aria-required="true" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="biography-edit-container">
+                <textarea asp-for="Biography" placeholder="Biography" rows="4" cols="50"></textarea>
+                <span asp-validation-for="Biography" class="text-danger"></span>
+            </div>
+            <button type="submit">EDIT</button>
+        </form>
+    </div>
+</section>
