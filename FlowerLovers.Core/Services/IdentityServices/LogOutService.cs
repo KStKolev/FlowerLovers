@@ -1,4 +1,4 @@
-﻿using FlowerLovers.Core.Contracts;
+﻿using FlowerLovers.Core.Contracts.IdentityServices;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

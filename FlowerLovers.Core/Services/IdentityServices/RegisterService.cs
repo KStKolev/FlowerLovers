@@ -1,7 +1,8 @@
 ﻿#nullable disable
 
 using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,28 +29,23 @@ namespace FlowerLovers.Core.Services.IdentityServices
 
         public async Task<IActionResult> OnPostAsync(RegisterModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var user = CreateUser();
-
-                UserStoreExtension.SetUserNames(user, model.FirstName, model.LastName);
-                UserStoreExtension.SetUserEmail(user, model.Email);
-                string fullName = model.FirstName + model.LastName;
-                await _userStore.SetUserNameAsync(user, fullName, CancellationToken.None);
+            var user = CreateUser();
+            UserStoreExtension.SetUserNames(user, model.FirstName, model.LastName);
+            UserStoreExtension.SetUserEmail(user, model.Email);
+            string fullName = model.FirstName + model.LastName;
+            await _userStore.SetUserNameAsync(user, fullName, CancellationToken.None);
                 
-                var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Register", "Identity");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Register", "Identity");
             }
-
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
             return Page();
         }
 

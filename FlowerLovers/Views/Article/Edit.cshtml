@@ -1,0 +1,34 @@
+﻿@model EditArticleModel
+
+<section class="edit-article-container">
+    <div class="edit-header">
+        <h1>Edit Article</h1>
+        <hr />
+    </div>
+    <div class="edit-article-form">
+        <form asp-action="Edit" asp-controller="Article" asp-route-articleId="@Model.ArticleId" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="title-edit-container">
+                <input asp-for="Title" class="form-control" placeholder="Title" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="image-edit-container">
+                <input asp-for="ImageFile" class="form-control" aria-required="true" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="content-edit-container">
+                <textarea asp-for="Content" placeholder="Content" rows="8" cols="50"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="category-edit-container">
+                <select asp-for="Category">
+                    <option value="Amusement">Amusement</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Appeal">Appeal</option>
+                </select>
+                <label asp-for="Category">Choose a category:</label>
+            </div>
+            <button type="submit">EDIT ARTICLE</button>
+        </form>
+    </div>
+</section>

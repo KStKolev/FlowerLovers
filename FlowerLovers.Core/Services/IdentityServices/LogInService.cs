@@ -1,7 +1,8 @@
 ﻿#nullable disable
 
 using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -33,24 +34,18 @@ namespace FlowerLovers.Core.Services.IdentityServices
 
         public async Task<IActionResult> OnPostAsync(LogInModel model)
         {
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
+
+            if (result.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("LogIn", "Identity");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
+                return RedirectToAction("LogIn", "Identity");
             }
-
-            // If we got this far, something failed, redisplay form
-            return Page();
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return Page();
+            }
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿/*
+    Add article container.
+*/
+
+.add-article-container {
+    width: 60%;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 12em;
+    position: relative;
+    top: 8em;
+    left: 20%;
+    transition: background-color 500ms ease-in-out;
+}
+
+.add-article-container:hover {
+    background-color: lightyellow;
+}
+
+/*
+    Add article container content
+*/
+
+.add-article-container > h1 {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.add-article-container > hr {
+    width: 15.5%;
+    margin-bottom: 2em;
+    position: relative;
+    left: 42%;
+}
+
+/*
+    Add article form
+*/
+
+.add-article-form {
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+
+/*
+    Add article form content
+*/
+
+.title-add-container, .image-add-container, .content-add-container > textarea {
+    margin-bottom: 1em;
+}
+
+.content-add-container > textarea {
+    width: 100%;
+}
+
+.category-add-container {
+    position: relative;
+    left: 38%;
+}
+
+.add-article-form > form > button {
+    background-color: lightgreen;
+    border: none;
+    border-radius: 4px;
+    padding: 2em;
+    margin-bottom: 5em;
+    position: relative;
+    top: 2em;
+    left: 26%;
+    transition: 300ms ease-in-out;
+}
+
+.add-article-form > form > button:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
