@@ -1,0 +1,103 @@
+﻿/*
+    user-content container
+*/
+
+.account-content-container {
+    border: 1.5px groove;
+    border-color: lightgray;
+    display: flex;
+    margin-bottom: 9em;
+    position: relative;
+    top: 7em;
+}
+
+/*
+    user initials
+*/
+
+.user-info-container {
+    width: 60%;
+    border-right: 1.5px groove;
+    border-color: lightgray;
+}
+
+.user-info-container > h1 {
+    position: relative;
+    left: 34.5%;
+}
+
+.user-info-container > img {
+    width: 25em;
+    border-radius: 50%;
+    margin: 1.5em 2em 0.7em auto;
+    position: relative;
+    left: 18.5%;
+}
+
+/*
+    user biography
+*/
+
+.biography-container {
+    width: 55%;
+    text-align: center;
+}
+
+.biography-container > h1 {
+    margin-top: 0.5em;
+}
+
+.biography-container > p {
+    width: 70%;
+    font-size: 1.05em;
+    margin-top: 1em;
+    position: relative;
+    left: 13%;
+}
+
+/*
+    container having user's number of articles and followers
+*/
+
+.article-likes-container, .edit-create-data-container {
+    margin-bottom: 0.5em;
+}
+
+.article-likes-container > span {
+    position: relative;
+    left: 48%;
+}
+
+/*
+    account date creation
+*/
+
+.date-page-container {
+    text-align: center;
+}
+
+/*
+    account edit-button
+*/
+
+.edit-account-button-container {
+    width: 50%;
+    margin-bottom: 7em;
+    position: relative;
+    top: 4em;
+    left: 43.5%;
+}
+
+.edit-account-button-container > a {
+    border: none;
+    border-radius: 4px;
+    background-color: rosybrown;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.edit-account-button-container > a:hover {
+        opacity: 0.8;
+        transition: 300ms ease-in-out;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
