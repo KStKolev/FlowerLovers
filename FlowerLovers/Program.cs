@@ -1,12 +1,17 @@
+using FlowerLovers.Core.Contracts.AccountService;
 using FlowerLovers.Core.Contracts.ApplicationServices;
+using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.AccountServices;
 using FlowerLovers.Core.Services.ApplicationUserService;
+using FlowerLovers.Core.Services.ArticleServices;
 using FlowerLovers.Core.Services.IdentityServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationDbContext(builder.Configuration);
 builder.Services.AddApplicationIdentity();
+
 builder.Services.AddTransient<IApplicationServiceUser, ApplicationUserService>();
 builder.Services.AddTransient<IRegisterService, RegisterService>();
 builder.Services.AddTransient<ILogInService, LogInService>();
@@ -16,6 +21,16 @@ builder.Services.AddTransient<ILogOutService, LogOutService>();
 builder.Services.AddTransient<IChangePasswordService, ChangePasswordService>();
 builder.Services.AddTransient<IPersonalDataService, PersonalDataService>();
 builder.Services.AddTransient<IDeletePersonalDataService, DeletePersonalDataService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddTransient<IEditAccountService, EditAccountService>();
+builder.Services.AddTransient<IAddArticleService, AddArticleService>();
+builder.Services.AddTransient<IArticleService, ArticleServices>();
+builder.Services.AddTransient<ISaveArticleService, SaveArticleService>();
+builder.Services.AddTransient<ISavedArticleService, SavedArticleService>();
+builder.Services.AddTransient<ILeaveArticleService, LeaveArticleService>();
+builder.Services.AddTransient<IDetailsArticleService, DetailsArticleService>();
+builder.Services.AddTransient<IRateService, RateService>();
+builder.Services.AddTransient<IEditArticleService, EditArticleService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
