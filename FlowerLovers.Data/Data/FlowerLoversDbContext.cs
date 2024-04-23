@@ -14,15 +14,9 @@ namespace FlowerLovers.Data.Data
 
         public DbSet<UserAccount> UserAccounts { get; set; } = null!;
         public DbSet<Article> Articles { get; set; } = null!;
-        public DbSet<ArticleTag> ArticlesTags { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
-        public DbSet<Comment> Comments { get; set; } = null!;
-        public DbSet<Follow> Follows { get; set; } = null!;
-        public DbSet<Image> Images { get; set; } = null!;
-        public DbSet<Like> Likes { get; set; } = null!;
         public DbSet<Rate> Rates { get; set; } = null!;
-        public DbSet<Tag> Tags { get; set; } = null!;
-
+        public DbSet<ArticleParticipant> ArticlesParticipants { get; set; } = null!;
 
         private ApplicationUser AdminUser { get; set; } = null!;
         private Category AmusementCategory { get; set; } = null!;
@@ -68,15 +62,14 @@ namespace FlowerLovers.Data.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //One-To-One relationship
-            builder.Entity<UserAccount>()
-                .HasOne(ua => ua.Image)
-                .WithOne(i => i.UserAccount);
-
-            //One-To-One relationship
-            builder.Entity<Article>()
-                .HasOne(a => a.Image)
-                .WithOne(i => i.Article);
+            // Sets primary keys for the data model
+            builder
+                .Entity<ArticleParticipant>()
+                .HasKey(k => new 
+            {
+                k.ArticleId, 
+                k.UserAccountId
+            });
 
             // One-To-Many relationship
             builder
@@ -86,44 +79,24 @@ namespace FlowerLovers.Data.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             // One-To-Many relationship
-            builder
-                .Entity<Comment>()
-                .HasOne(c => c.Article)
-                .WithMany(a => a.Comments)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-To-Many relationship
-            builder.Entity<Comment>()
-                .HasOne(c => c.UserAccount)
-                .WithMany(ua => ua.Comments)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-To-Many relationship
-            builder.Entity<Like>()
-                .HasOne(l => l.Article)
-                .WithMany(a => a.Likes)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // One-To-Many relationship
             builder.Entity<Rate>()
                 .HasOne(r => r.Article)
                 .WithMany(a => a.Rates)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Many-To-Many relationship
-            builder.Entity<UserAccount>()
-                .HasMany(ua => ua.FollowedUserAccount)
-                .WithMany(ua => ua.FollowerUserAccount)
-                .UsingEntity<Follow>(
-                    f => f
-                    .HasOne<UserAccount>()
-                    .WithMany()
-                    .HasForeignKey(f => f.FollowedUserAccountId),
-                    f => f
-                    .HasOne<UserAccount>()
-                    .WithMany()
-                    .HasForeignKey(f => f.FollowerUserAccountId)
-                );
+            // Realization of Many-To-Many relationship
+            builder
+                .Entity<ArticleParticipant>()
+                .HasOne(a => a.Article)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ArticleParticipant>()
+                .HasOne(a => a.UserAccount)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             //Seed Categories
             SeedCategory();
@@ -137,15 +110,6 @@ namespace FlowerLovers.Data.Data
             SeedApplicationUser();
             builder.Entity<ApplicationUser>()
                 .HasData(AdminUser);
-
-            //Set many-to-many relationship primary keys
-            builder
-                .Entity<ArticleTag>()
-                .HasKey(k => new
-                {
-                    k.TagId,
-                    k.ArticleId
-                });
 
             base.OnModelCreating(builder);
         }

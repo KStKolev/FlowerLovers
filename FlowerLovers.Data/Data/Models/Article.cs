@@ -38,20 +38,11 @@ namespace FlowerLovers.Data.Data.Models
         public Category Category { get; set; } = null!;
 
         [Required]
-        [Display(Name = "Image ID")]
+        [Display(Name = "Image URL")]
 
-        public Image Image { get; set; } = null!;
+        public string ImageUrl { get; set; } = string.Empty;
 
-        public IEnumerable<Comment> Comments { get; set; } =
-            new List<Comment>();
-
-        public IEnumerable<Rate> Rates { get; set; } = 
+        public List<Rate> Rates { get; set; } = 
             new List<Rate>();
-
-        public IEnumerable<Like> Likes { get; set; } = 
-            new List<Like>();
-
-        public IEnumerable<ArticleTag> ArticlesTags { get; set; } = 
-            new List<ArticleTag>();
     }
 }

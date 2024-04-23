@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlowerLovers.Data.Migrations
 {
     [DbContext(typeof(FlowerLoversDbContext))]
-    [Migration("20240331200124_initial-migration")]
-    partial class initialmigration
+    [Migration("20240422181359_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,7 +103,7 @@ namespace FlowerLovers.Data.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d397f165-0e4f-421e-b1f5-feacc139388a",
+                            ConcurrencyStamp = "6cb8d19e-1ce3-441f-9d78-ae589df1672b",
                             Email = "admin@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kolio",
@@ -111,9 +111,9 @@ namespace FlowerLovers.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "admin@mail.com",
                             NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEND/Nu/LdrfNGPBZpRVnR7FMZwGK5tA8wAqrwh9MTrYrIeln9zuJssjth7Qnbw1NRA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGZxgmqwqaDZJRRzA6f0YBVNW3R6LzEo/A5q6Efs9bM2TrN2DXtsFADZzcFv0661ug==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d5b7f894-9bb4-405e-95df-3ca2dd3e57e2",
+                            SecurityStamp = "16abb685-e35f-4afe-a88d-1f8d53a73a7a",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -138,6 +138,10 @@ namespace FlowerLovers.Data.Migrations
                     b.Property<DateTime>("DateOfPublish")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -155,19 +159,19 @@ namespace FlowerLovers.Data.Migrations
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.ArticleTag", b =>
+            modelBuilder.Entity("FlowerLovers.Data.Data.Models.ArticleParticipant", b =>
                 {
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
-                    b.HasKey("TagId", "ArticleId");
+                    b.Property<int>("UserAccountId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("ArticleId");
+                    b.HasKey("ArticleId", "UserAccountId");
 
-                    b.ToTable("ArticlesTags");
+                    b.HasIndex("UserAccountId");
+
+                    b.ToTable("ArticlesParticipants");
                 });
 
             modelBuilder.Entity("FlowerLovers.Data.Data.Models.Category", b =>
@@ -205,120 +209,6 @@ namespace FlowerLovers.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("DateOfPost")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserAccountId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("UserAccountId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Follow", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateOfFollow")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("FollowedUserAccountId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FollowerUserAccountId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FollowedUserAccountId");
-
-                    b.HasIndex("FollowerUserAccountId");
-
-                    b.ToTable("Follows");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Caption")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserAccountId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId")
-                        .IsUnique();
-
-                    b.HasIndex("UserAccountId")
-                        .IsUnique();
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Like", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserAccountId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("UserAccountId");
-
-                    b.ToTable("Likes");
-                });
-
             modelBuilder.Entity("FlowerLovers.Data.Data.Models.Rate", b =>
                 {
                     b.Property<int>("Id")
@@ -345,24 +235,6 @@ namespace FlowerLovers.Data.Migrations
                     b.ToTable("Rates");
                 });
 
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
-                });
-
             modelBuilder.Entity("FlowerLovers.Data.Data.Models.UserAccount", b =>
                 {
                     b.Property<int>("Id")
@@ -378,6 +250,10 @@ namespace FlowerLovers.Data.Migrations
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -545,82 +421,10 @@ namespace FlowerLovers.Data.Migrations
                     b.Navigation("UserAccount");
                 });
 
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.ArticleTag", b =>
+            modelBuilder.Entity("FlowerLovers.Data.Data.Models.ArticleParticipant", b =>
                 {
                     b.HasOne("FlowerLovers.Data.Data.Models.Article", "Article")
-                        .WithMany("ArticlesTags")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FlowerLovers.Data.Data.Models.Tag", "Tag")
-                        .WithMany("ArticlesTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-
-                    b.Navigation("Tag");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Comment", b =>
-                {
-                    b.HasOne("FlowerLovers.Data.Data.Models.Article", "Article")
-                        .WithMany("Comments")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FlowerLovers.Data.Data.Models.UserAccount", "UserAccount")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserAccountId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-
-                    b.Navigation("UserAccount");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Follow", b =>
-                {
-                    b.HasOne("FlowerLovers.Data.Data.Models.UserAccount", null)
                         .WithMany()
-                        .HasForeignKey("FollowedUserAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FlowerLovers.Data.Data.Models.UserAccount", null)
-                        .WithMany()
-                        .HasForeignKey("FollowerUserAccountId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Image", b =>
-                {
-                    b.HasOne("FlowerLovers.Data.Data.Models.Article", "Article")
-                        .WithOne("Image")
-                        .HasForeignKey("FlowerLovers.Data.Data.Models.Image", "ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FlowerLovers.Data.Data.Models.UserAccount", "UserAccount")
-                        .WithOne("Image")
-                        .HasForeignKey("FlowerLovers.Data.Data.Models.Image", "UserAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Article");
-
-                    b.Navigation("UserAccount");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Like", b =>
-                {
-                    b.HasOne("FlowerLovers.Data.Data.Models.Article", "Article")
-                        .WithMany("Likes")
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -628,7 +432,7 @@ namespace FlowerLovers.Data.Migrations
                     b.HasOne("FlowerLovers.Data.Data.Models.UserAccount", "UserAccount")
                         .WithMany()
                         .HasForeignKey("UserAccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Article");
@@ -708,30 +512,12 @@ namespace FlowerLovers.Data.Migrations
 
             modelBuilder.Entity("FlowerLovers.Data.Data.Models.Article", b =>
                 {
-                    b.Navigation("ArticlesTags");
-
-                    b.Navigation("Comments");
-
-                    b.Navigation("Image")
-                        .IsRequired();
-
-                    b.Navigation("Likes");
-
                     b.Navigation("Rates");
-                });
-
-            modelBuilder.Entity("FlowerLovers.Data.Data.Models.Tag", b =>
-                {
-                    b.Navigation("ArticlesTags");
                 });
 
             modelBuilder.Entity("FlowerLovers.Data.Data.Models.UserAccount", b =>
                 {
                     b.Navigation("Articles");
-
-                    b.Navigation("Comments");
-
-                    b.Navigation("Image");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlowerLovers.Data.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,25 +64,13 @@ namespace FlowerLovers.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tags",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tags", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "UserAccounts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Biography = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -207,7 +195,8 @@ namespace FlowerLovers.Data.Migrations
                     Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     UserAccountId = table.Column<int>(type: "int", nullable: false),
                     DateOfPublish = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -227,135 +216,27 @@ namespace FlowerLovers.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Follows",
+                name: "ArticlesParticipants",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FollowerUserAccountId = table.Column<int>(type: "int", nullable: false),
-                    FollowedUserAccountId = table.Column<int>(type: "int", nullable: false),
-                    DateOfFollow = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Follows", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Follows_UserAccounts_FollowedUserAccountId",
-                        column: x => x.FollowedUserAccountId,
-                        principalTable: "UserAccounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Follows_UserAccounts_FollowerUserAccountId",
-                        column: x => x.FollowerUserAccountId,
-                        principalTable: "UserAccounts",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ArticlesTags",
-                columns: table => new
-                {
-                    ArticleId = table.Column<int>(type: "int", nullable: false),
-                    TagId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArticlesTags", x => new { x.TagId, x.ArticleId });
-                    table.ForeignKey(
-                        name: "FK_ArticlesTags_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArticlesTags_Tags_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Comments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ArticleId = table.Column<int>(type: "int", nullable: false),
-                    UserAccountId = table.Column<int>(type: "int", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    DateOfPost = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Comments_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Comments_UserAccounts_UserAccountId",
-                        column: x => x.UserAccountId,
-                        principalTable: "UserAccounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Caption = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     UserAccountId = table.Column<int>(type: "int", nullable: false),
                     ArticleId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.PrimaryKey("PK_ArticlesParticipants", x => new { x.ArticleId, x.UserAccountId });
                     table.ForeignKey(
-                        name: "FK_Images_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Images_UserAccounts_UserAccountId",
-                        column: x => x.UserAccountId,
-                        principalTable: "UserAccounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Likes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ArticleId = table.Column<int>(type: "int", nullable: false),
-                    UserAccountId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Likes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Likes_Articles_ArticleId",
+                        name: "FK_ArticlesParticipants_Articles_ArticleId",
                         column: x => x.ArticleId,
                         principalTable: "Articles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Likes_UserAccounts_UserAccountId",
+                        name: "FK_ArticlesParticipants_UserAccounts_UserAccountId",
                         column: x => x.UserAccountId,
                         principalTable: "UserAccounts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -388,7 +269,7 @@ namespace FlowerLovers.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dea12856-c198-4129-b3f3-b893d8395082", 0, "d397f165-0e4f-421e-b1f5-feacc139388a", "admin@mail.com", false, "Kolio", "Kolev", false, null, "admin@mail.com", "admin@mail.com", "AQAAAAEAACcQAAAAEND/Nu/LdrfNGPBZpRVnR7FMZwGK5tA8wAqrwh9MTrYrIeln9zuJssjth7Qnbw1NRA==", null, false, "d5b7f894-9bb4-405e-95df-3ca2dd3e57e2", false, "admin@mail.com" });
+                values: new object[] { "dea12856-c198-4129-b3f3-b893d8395082", 0, "6cb8d19e-1ce3-441f-9d78-ae589df1672b", "admin@mail.com", false, "Kolio", "Kolev", false, null, "admin@mail.com", "admin@mail.com", "AQAAAAEAACcQAAAAEGZxgmqwqaDZJRRzA6f0YBVNW3R6LzEo/A5q6Efs9bM2TrN2DXtsFADZzcFv0661ug==", null, false, "16abb685-e35f-4afe-a88d-1f8d53a73a7a", false, "admin@mail.com" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -411,9 +292,9 @@ namespace FlowerLovers.Data.Migrations
                 column: "UserAccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArticlesTags_ArticleId",
-                table: "ArticlesTags",
-                column: "ArticleId");
+                name: "IX_ArticlesParticipants_UserAccountId",
+                table: "ArticlesParticipants",
+                column: "UserAccountId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -455,48 +336,6 @@ namespace FlowerLovers.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_ArticleId",
-                table: "Comments",
-                column: "ArticleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Comments_UserAccountId",
-                table: "Comments",
-                column: "UserAccountId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Follows_FollowedUserAccountId",
-                table: "Follows",
-                column: "FollowedUserAccountId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Follows_FollowerUserAccountId",
-                table: "Follows",
-                column: "FollowerUserAccountId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_ArticleId",
-                table: "Images",
-                column: "ArticleId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_UserAccountId",
-                table: "Images",
-                column: "UserAccountId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Likes_ArticleId",
-                table: "Likes",
-                column: "ArticleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Likes_UserAccountId",
-                table: "Likes",
-                column: "UserAccountId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Rates_ArticleId",
                 table: "Rates",
                 column: "ArticleId");
@@ -510,7 +349,7 @@ namespace FlowerLovers.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ArticlesTags");
+                name: "ArticlesParticipants");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -528,22 +367,7 @@ namespace FlowerLovers.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Comments");
-
-            migrationBuilder.DropTable(
-                name: "Follows");
-
-            migrationBuilder.DropTable(
-                name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "Likes");
-
-            migrationBuilder.DropTable(
                 name: "Rates");
-
-            migrationBuilder.DropTable(
-                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
