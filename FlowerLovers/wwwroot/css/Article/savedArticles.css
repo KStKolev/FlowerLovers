@@ -1,0 +1,30 @@
+﻿/*
+    saved articles container
+*/
+
+.saved-articles-section {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-bottom: 10em;
+    position: relative;
+    top: 7em;
+}
+
+/*
+    saved articles header container
+*/
+.saved-articles-header {
+    margin-bottom: 8em;
+    position: relative;
+    top: 2.5em;
+}
+
+/*
+    saved articles header content
+*/
+
+.saved-articles-header > h1 {
+    text-align: center;
+}
+

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -16,33 +19,41 @@
         <link rel="stylesheet" href="~/css/Identity/changePassword.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/Identity/personalData.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/Identity/deletePersonalData.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Account/userAccount.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Account/editAccount.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/detailsArticle.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/addArticle.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/mainPage.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/savedArticles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/rateArticle.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Article/editArticle.css" asp-append-version="true" />
 
         <title>Flower Lovers</title>
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-                <div class="container-fluid">
+    <header>
+        <nav class="nav-display">
+            <ul class="nav-list">
+                <li class="nav-logo">
                     <img class="logo" src="~/Content/Images/flower-logo.png" alt="logo" />
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">FlowerLovers</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial"/>
-                    </div>
-                </div>
-            </nav>
-        </header>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+                <li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-controller="Article" asp-action="MainPage">FlowerLovers</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Home" asp-action="Index">FlowerLovers</a>
+                    }
+                </li>
+                <partial name="_LoginPartial" />
+            </ul>
+        </nav>
+    </header>
         <div class="container">
             <main role="main" class="pb-3">
             @RenderBody()

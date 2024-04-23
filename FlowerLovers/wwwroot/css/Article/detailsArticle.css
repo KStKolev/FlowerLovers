@@ -1,0 +1,92 @@
+﻿/*
+    details article container
+*/
+
+.details-article-container {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 4px;
+    margin-bottom: 12em;
+    position: relative;
+    top: 6em;
+}
+
+.details-header-container {
+    position: relative;
+    top: 3em;
+    margin-bottom: 8em;
+}
+
+/*
+    details article header
+*/
+
+.details-header-container > h1 {
+    text-align: center;
+}
+
+.details-header-container > hr {
+    width: 20%;
+    position: relative;
+    left: 40%;
+}
+
+/*
+    details article content
+*/
+
+.article-details-content {
+    margin: 3em;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 1.5%;
+}
+
+/*
+    details article buttons
+*/
+
+.delete-article-button {
+    background-color: rosybrown;
+    margin-right: 1em;
+}
+
+.edit-article-button {
+    background-color: greenyellow;
+    margin-right: 1em;
+}
+
+.rate-article-button {
+    background-color: aliceblue
+}
+
+.article-details-content > a {
+    border: none;
+    border-radius: 4px;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.article-details-content > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
+    details article average rate and date
+*/
+
+.rate-date-container {
+    width: max-content;
+    display: grid;
+    margin-bottom: 2em;
+    position: relative;
+    left: 38%;
+}
+
+.average-rate {
+    text-align: center;
+    margin-bottom: 0.5em;
+}

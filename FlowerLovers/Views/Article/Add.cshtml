@@ -1,0 +1,32 @@
+﻿@model AddArticleModel
+
+<section class="add-article-container">
+    <h1>Create Article</h1>
+    <hr/>
+    <div class="add-article-form">
+        <form asp-action="Add" asp-controller="Article" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="title-add-container">
+                <input asp-for="Title" class="form-control" placeholder="Title" autocomplete="username" aria-required="true" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="image-add-container">
+                <input asp-for="ImageFile" class="form-control" aria-required="true" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="content-add-container">
+                <textarea asp-for="Content" placeholder="Content" rows="8" cols="50"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="category-add-container">
+                <select asp-for="Category">
+                    <option value="Amusement">Amusement</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Appeal">Appeal</option>
+                </select>
+                <label asp-for="Category">Choose a category:</label>
+            </div>
+            <button type="submit">CREATE ARTICLE</button>
+        </form>
+    </div>
+</section>
