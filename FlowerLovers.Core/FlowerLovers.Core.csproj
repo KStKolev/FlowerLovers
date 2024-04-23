@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\AccountService\" />
     <Folder Include="CustomAttributes\Filters\" />
   </ItemGroup>
 

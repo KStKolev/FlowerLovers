@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ArticleModel>
+
+<section class="main-page-container">
+    <h1>
+        Main Page
+    </h1>
+    <hr/>
+    <div class="articles-container">
+        @foreach (var article in Model)
+        {
+            <article class="article-container">
+                <h3>
+                    @article.Title
+                </h3>
+                <hr class="article-header-line" />
+                <div class="article-border-content">
+                    <img src="@Url.Content(@"~/" + article.ArticleImageUrl)" alt="article image" />
+                    <h4>
+                        Information about the flower:
+                    </h4>
+                    <hr class="article-content-line" />
+                    <p>
+                        @article.Content
+                    </p>
+                    <div class="article-form-content">
+                        <form asp-action="Save" asp-controller="Article" asp-route-articleId="@article.Id" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <button type="submit">SAVE</button>
+                        </form>
+                        <a asp-action="Details" asp-controller="Article" asp-route-articleId="@article.Id">DETAILS</a>
+                    </div>
+                </div>
+                <div class="publisher-container">
+                    <h6>
+                        Publisher: @article.PublisherName
+                    </h6>
+                    <img src="@Url.Content(@"~/" + article.UserImageUrl)" alt="publisher image" />
+                </div>
+            </article>
+        }
+    </div>
+</section>

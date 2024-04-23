@@ -1,0 +1,158 @@
+﻿/*
+    main page container
+*/
+
+.main-page-container {
+    width: 80%;
+    border: 1.5px groove;
+    background-color: #fffcf7;
+    border-radius: 4px;
+    margin-bottom: 15em;
+    position: relative;
+    top: 8em;
+    left: 9.5%;
+}
+
+/*
+    main page header
+*/
+
+.main-page-container > h1 {
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+/*
+    main page article container
+*/
+
+.article-container {
+    border: 1px groove;
+    border-radius: 4px;
+    background-color: #fffcf2;
+    margin: 4em;
+}
+
+/*
+    main page article headers
+*/
+
+.article-container > h3, .article-border-content > h4 {
+        text-align: center;
+        margin-top: 0.8em;
+    }
+
+.article-border-content > h4 {
+    position: relative;
+    left: 1.5%;
+}
+/*
+    main page article's hrs
+*/
+.article-border-content {
+    margin-top: 2em;
+    width: 80%;
+    border: 1px groove;
+    border-radius: 4px;
+    background-color: #fafffe;
+    position: relative;
+    left: 9.5%;
+}
+
+.article-border-content > img {
+    width: 50%;
+    border-radius: 4px;
+    aspect-ratio: 16 / 9;
+    margin: 2em;
+    position: relative;
+    left: 23%;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+}
+
+.article-header-line, .article-content-line {
+    width: 30%;
+    position: relative;
+}
+
+.article-header-line {
+    left: 35%;
+}
+
+.article-content-line {
+    left: 36.2%;
+}
+
+.article-border-content > p {
+        width: 70%;
+        text-align: center;
+        margin-top: 2em;
+        position: relative;
+        left: 16%;
+    }
+
+/*
+    main page article's forms
+*/
+
+.article-form-content {
+    margin: 3em;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    left: 4%;
+}
+
+.article-form-content > * {
+    margin-right: 2em;
+}
+
+/*
+    main page article's forms' content
+*/
+
+.article-form-content > a {
+    background-color: rosybrown;
+}
+
+.article-form-content > form:nth-child(1) > button {
+    background-color: antiquewhite;
+}
+
+.article-form-content > form:nth-child(2) > button {
+    background-color: pink;
+}
+
+.article-form-content > form > button, .article-form-content > a {
+    border: none;
+    border-radius: 4px;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.article-form-content > form > button:hover, .article-form-content > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
+    article's publisher content
+*/
+
+.publisher-container {
+    margin: 2em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.publisher-container > h6 {
+    position: relative;
+    top: 1em;
+    right: 3%;
+}
+
+.publisher-container > img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
