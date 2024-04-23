@@ -55,7 +55,7 @@ namespace FlowerLovers.Web.Controllers
                 return View(model);
             }
             await registerService.OnPostAsync(model);
-            return RedirectToAction(nameof(Index), "Home");
+            return RedirectToAction("MainPage", "Article");
         }
 
         // Log In
@@ -76,7 +76,7 @@ namespace FlowerLovers.Web.Controllers
                 return View(model);
             }
             await logInService.OnPostAsync(model);
-            return RedirectToAction(nameof(Index), "Home");
+            return RedirectToAction("MainPage", "Article");
         }
 
         // Forgot password
@@ -150,7 +150,7 @@ namespace FlowerLovers.Web.Controllers
         {
             string userId = User.UserId();
             await changePasswordService.OnPostAsync(model, userId);
-            return RedirectToAction(nameof(Index), "Home");
+            return RedirectToAction("MainPage", "Article");
         }
 
         // Get to personal data.
