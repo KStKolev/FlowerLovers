@@ -1,11 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using FlowerLovers.Core.CustomAttributes.Email;
+using System.ComponentModel.DataAnnotations;
 
-namespace FlowerLovers.Core.Services.Models
+namespace FlowerLovers.Core.Services.IdentityServices.Models
 {
     public class LogInModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [EmailValidation]
+        [EmailNotCreated]
         public string Email { get; set; } = string.Empty;
 
         [Required]

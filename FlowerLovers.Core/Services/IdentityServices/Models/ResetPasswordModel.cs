@@ -1,12 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static FlowerLovers.Core.Services.Models.DataRequirements.ResetPasswordInputDataConstants;
+﻿using FlowerLovers.Core.CustomAttributes.Email;
+using System.ComponentModel.DataAnnotations;
+using static FlowerLovers.Core.Services.IdentityServices.Models.DataRequirements.ResetPasswordInputDataConstants;
 
-namespace FlowerLovers.Core.Services.Models
+namespace FlowerLovers.Core.Services.IdentityServices.Models
 {
     public class ResetPasswordModel
     {
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [EmailValidation]
+        [EmailNotCreated]
         public string Email { get; set; } = string.Empty;
 
         [Required]

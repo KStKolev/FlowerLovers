@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using static FlowerLovers.Data.Data.DataRequirements.UserAccountDataConstants;
 
 namespace FlowerLovers.Data.Data.Models

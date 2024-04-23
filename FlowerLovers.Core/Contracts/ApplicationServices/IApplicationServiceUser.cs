@@ -1,4 +1,4 @@
-﻿namespace FlowerLovers.Core.Contracts
+﻿namespace FlowerLovers.Core.Contracts.ApplicationServices
 {
     public interface IApplicationServiceUser
     {

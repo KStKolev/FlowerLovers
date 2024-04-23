@@ -1,4 +1,4 @@
-﻿namespace FlowerLovers.Core.Services.Models
+﻿namespace FlowerLovers.Core.Services.ApplicationUserService.Models
 {
     public class ApplicationUserModel
     {

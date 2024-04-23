@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static FlowerLovers.Core.Services.Models.DataRequirements.RegisterInputDataConstants;
+﻿using FlowerLovers.Core.CustomAttributes.Email;
+using System.ComponentModel.DataAnnotations;
+using static FlowerLovers.Core.Services.IdentityServices.Models.DataRequirements.RegisterInputDataConstants;
 using static FlowerLovers.Data.Data.DataRequirements.ApplicationUserDataConstants;
 
-
-namespace FlowerLovers.Core.Services.Models
+namespace FlowerLovers.Core.Services.IdentityServices.Models
 {
     public class RegisterModel
     {
@@ -27,7 +27,9 @@ namespace FlowerLovers.Core.Services.Models
         public string LastName { get; set; } = string.Empty;
 
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [EmailValidation]
+        [UniqueEmail]
         [Display(Name = "Email")]
         public string Email { get; set; } = string.Empty;
 

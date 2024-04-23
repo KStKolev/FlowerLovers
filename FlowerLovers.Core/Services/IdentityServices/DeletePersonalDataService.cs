@@ -1,5 +1,5 @@
-﻿using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+﻿using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

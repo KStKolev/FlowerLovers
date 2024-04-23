@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static FlowerLovers.Core.Services.Models.DataRequirements.ChangePasswordInputDataConstants;
+using static FlowerLovers.Core.Services.IdentityServices.Models.DataRequirements.ChangePasswordInputDataConstants;
 
-namespace FlowerLovers.Core.Services.Models
+namespace FlowerLovers.Core.Services.IdentityServices.Models
 {
     public class ChangePasswordModel
     {

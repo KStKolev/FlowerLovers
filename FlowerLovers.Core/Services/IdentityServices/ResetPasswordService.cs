@@ -1,5 +1,5 @@
-﻿using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+﻿using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +18,7 @@ namespace FlowerLovers.Core.Services.IdentityServices
 
         public async Task<IActionResult> OnPostAsync(ResetPasswordModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             var user = await _userManager.FindByEmailAsync(model.Email);
-
             if (user != null)
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);

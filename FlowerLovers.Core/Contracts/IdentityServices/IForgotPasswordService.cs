@@ -1,7 +1,7 @@
-﻿using FlowerLovers.Core.Services.Models;
+﻿using FlowerLovers.Core.Services.IdentityServices.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FlowerLovers.Core.Contracts
+namespace FlowerLovers.Core.Contracts.IdentityServices
 {
     public interface IForgotPasswordService
     {

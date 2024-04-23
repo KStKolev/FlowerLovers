@@ -1,4 +1,5 @@
-using FlowerLovers.Core.Contracts;
+using FlowerLovers.Core.Contracts.ApplicationServices;
+using FlowerLovers.Core.Contracts.IdentityServices;
 using FlowerLovers.Core.Services.ApplicationUserService;
 using FlowerLovers.Core.Services.IdentityServices;
 

@@ -1,5 +1,5 @@
-﻿using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+﻿using FlowerLovers.Core.Contracts.ApplicationServices;
+using FlowerLovers.Core.Services.ApplicationUserService.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

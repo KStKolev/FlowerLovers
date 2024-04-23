@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FlowerLovers.Core.Contracts;
-using FlowerLovers.Core.Services.Models;
+using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Services.IdentityServices.Models;
 
 namespace FlowerLovers.Core.Services.IdentityServices
 {
@@ -18,13 +18,10 @@ namespace FlowerLovers.Core.Services.IdentityServices
 
         public async Task<IActionResult> OnPostAsync(ForgotPasswordModel model)
         {
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null)
-                {
-                    return RedirectToAction("Error", "Home");
-                }
+                return RedirectToAction("Error", "Home");
             }
             return RedirectToAction("ForgotPassword", "Identity");
         }

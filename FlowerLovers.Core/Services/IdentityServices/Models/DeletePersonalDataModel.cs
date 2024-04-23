@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FlowerLovers.Core.Services.Models
+namespace FlowerLovers.Core.Services.IdentityServices.Models
 {
     public class DeletePersonalDataModel
     {

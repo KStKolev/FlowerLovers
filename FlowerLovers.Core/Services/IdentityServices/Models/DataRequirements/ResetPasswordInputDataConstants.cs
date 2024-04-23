@@ -1,4 +1,4 @@
-﻿namespace FlowerLovers.Core.Services.Models.DataRequirements
+﻿namespace FlowerLovers.Core.Services.IdentityServices.Models.DataRequirements
 {
     public static class ResetPasswordInputDataConstants
     {
