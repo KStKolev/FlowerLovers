@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerLovers.Data", "..\Flo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowerLovers.Core", "..\FlowerLovers.Core\FlowerLovers.Core.csproj", "{D9F7873F-362F-4A8C-8447-892AE37FB9B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementTests", "..\ArticleManagementTests\UserManagementTests.csproj", "{16704D7E-BE85-4DA9-A9B1-0FE0AB952C34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D9F7873F-362F-4A8C-8447-892AE37FB9B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F7873F-362F-4A8C-8447-892AE37FB9B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9F7873F-362F-4A8C-8447-892AE37FB9B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16704D7E-BE85-4DA9-A9B1-0FE0AB952C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16704D7E-BE85-4DA9-A9B1-0FE0AB952C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16704D7E-BE85-4DA9-A9B1-0FE0AB952C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16704D7E-BE85-4DA9-A9B1-0FE0AB952C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

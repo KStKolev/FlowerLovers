@@ -1,48 +1,44 @@
-﻿@model DetailsArticleModel
+﻿@inject UserManager<ApplicationUser> UserManager
+@model DetailsArticleModel
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
 
 <section class="details-article-container">
-    <div class="details-header-container">
-        <h1>
-            Details container
-        </h1>
-        <hr />
+    <div class="container">
+        <div class="details-header-container">
+            <h1>Details container</h1>
+            <hr/>
+        </div>
+        <article class="article-container">
+            <h3>@Model.Title</h3>
+            <hr class="article-header-line" />
+            <div class="article-border-content">
+                <img src="@Url.Content(@"~/" + Model.ArticleImageUrl)" class="img-fluid" alt="article image" />
+                <h4>Information about the flower:</h4>
+                <hr class="article-content-line" />
+                <p>@Model.Content</p>
+                <div class="article-details-content d-flex justify-content-center">
+                    @if (User.Identity.IsAuthenticated && user.IsAdmin == true)
+                    {
+                        <a class="btn btn-danger delete-article-button" asp-action="DeleteConfirm" asp-controller="Admin" asp-route-articleId="@Model.Id">DELETE</a>
+                    }
+                    @if (User.Identity != null && User.Identity.Name == Model.PublisherName)
+                    {
+                        <a class="btn btn-success edit-article-button" asp-action="Edit" asp-controller="Article" asp-route-articleId="@Model.Id">EDIT</a>
+                    }
+                    <a class="btn btn-info rate-article-button" asp-action="Rate" asp-controller="Article" asp-route-articleId="@Model.Id">RATE</a>
+                </div>
+                <div class="rate-date-container">
+                    <span class="average-rate">Rate: @Model.AverageRate</span>
+                    <span class="details-date">Date of creation: @Model.DateOfPublish.ToString(DateFormatConstants.DATEFORMAT)</span>
+                </div>
+            </div>
+            <div class="publisher-container">
+                <h6>Publisher: <a asp-action="AccountPage" asp-controller="Account" asp-route-id="@Model.PublisherId">@Model.PublisherName</a></h6>
+                <img src="@Url.Content(@"~/" + Model.PublisherImageUrl)" class="img-fluid" alt="publisher image" />
+            </div>
+        </article>
     </div>
-    <article class="article-container">
-        <h3>
-            @Model.Title
-        </h3>
-        <hr class="article-header-line" />
-        <div class="article-border-content">
-            <img src="@Url.Content(@"~/" + Model.ArticleImageUrl)" alt="article image" />
-            <h4>
-                Information about the flower:
-            </h4>
-            <hr class="article-content-line" />
-            <p>
-                @Model.Content
-            </p>
-            <div class="article-details-content">
-                <!--<a class="delete-article-button" asp-action="Delete" asp-controller="Article" asp-route-articleId="@Model.Id">DELETE</a>-->
-                @if (User.Identity != null && User.Identity.Name == Model.PublisherName)
-                {
-                    <a class="edit-article-button" asp-action="Edit" asp-controller="Article" asp-route-articleId="@Model.Id">EDIT</a>
-                }
-                <a class="rate-article-button" asp-action="Rate" asp-controller="Article" asp-route-articleId="@Model.Id">RATE</a>
-            </div>
-            <div class="rate-date-container">
-                <span class="average-rate">
-                    Rate: @Model.AverageRate
-                </span>
-                <span class="details-date">
-                    Date of creation: @Model.DateOfPublish.ToString(DateFormatConstants.DATEFORMAT)
-                </span>
-            </div>
-        </div>
-        <div class="publisher-container">
-            <h6>
-                Publisher: @Model.PublisherName
-            </h6>
-            <img src="@Url.Content(@"~/" + Model.PublisherImageUrl)" alt="publisher image" />
-        </div>
-    </article>
 </section>

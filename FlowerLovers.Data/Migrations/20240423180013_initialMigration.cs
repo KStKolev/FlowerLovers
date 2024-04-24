@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FlowerLovers.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,7 @@ namespace FlowerLovers.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -268,8 +269,12 @@ namespace FlowerLovers.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dea12856-c198-4129-b3f3-b893d8395082", 0, "6cb8d19e-1ce3-441f-9d78-ae589df1672b", "admin@mail.com", false, "Kolio", "Kolev", false, null, "admin@mail.com", "admin@mail.com", "AQAAAAEAACcQAAAAEGZxgmqwqaDZJRRzA6f0YBVNW3R6LzEo/A5q6Efs9bM2TrN2DXtsFADZzcFv0661ug==", null, false, "16abb685-e35f-4afe-a88d-1f8d53a73a7a", false, "admin@mail.com" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "IsAdmin", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "a2c10gb6-c198-1199-a7ft-b7p3f139c082", 0, "18f41241-2cef-4934-b6cf-77708b3e8423", "adminVladimirova@mail.com", false, "Magdalena", true, "Vladimirova", false, null, "ADMINVLADIMIROVA@MAIL.COM", "ADMINVLADIMIROVA", "AQAAAAEAACcQAAAAEE6uhSUcULlIRAD9lfvGbWKpb917p1p8Aip1iOAfdkpjWI6dclSxdVWrvmsmjVeh9w==", null, false, "c2b9c1a0-bf43-4d43-8969-924443a55162", false, "adminVladimirova" },
+                    { "dea12856-c198-4129-b3f3-b893d8395082", 0, "40022495-0c33-41ef-90fb-8bcc040e1f04", "adminKolev@mail.com", false, "Kolio", true, "Kolev", false, null, "ADMINKOLEV@MAIL.COM", "ADMINKOLEV", "AQAAAAEAACcQAAAAEAbNcfgtRJSdgxNKv/oZK6vQt7CIa3zfJcNtkv9HvF6ZOlrqn6n/GKlXvbg78+jK6w==", null, false, "c6b786d3-1c52-49aa-a4aa-9143e75d898a", false, "adminKolev" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Categories",

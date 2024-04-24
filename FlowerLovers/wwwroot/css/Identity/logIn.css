@@ -1,101 +1,23 @@
-﻿/*
-    log in container
-*/
-
-.log-in-container {
-    width: 50%;
-    background-color: white;
-    border: 1px solid;
-    border-radius: 4px;
-    margin-bottom: 8em;
-    padding: 2em;
-    position: relative;
-    top: 6.5em;
-    left: 26%;
-    transition: background-color 500ms ease-in;
-}
-
-.log-in-container:hover {
-    background-color: lightyellow;
-}
-
-/*
-    container's child elements
-*/
-
-.log-in-container > div {
-    width: 100%;
-}
-
-.log-in-container > h1 {
-    text-align: center;
-}
-
-/*
-    form
-*/
-
-#account {
-    width: 200%;
-}
-
-/*
-    form and form's child elements position
-*/
-
-#account > hr, .login-password, .login-email, .log-in-button, .links > p {
-    position: relative;
-}
-
-/*
-    form's hr
-*/
-
-#account > hr {
-    left: 22%;
-}
-
-/*
-    login password and email
-*/
-
-.login-password, .login-email {
-    width: 120%;
-    padding: 0.5em;
-    left: 12%;
-}
-
-/* 
-    remember me checkbox
-*/
-
-.checkbox {
-    margin: 1em auto auto 1em;
-}
-
-/*
-    log in submission button
-*/
-
-.log-in-button {
-    margin: 1.5em;
-    left: 25%;
-}
-
-/*
-    registration and forgot password links
-*/
-
-.links > p {
-    left: 54%;
-}
-
-.links > p > a {
+﻿button, a {
+    border: none;
+    outline: none;
     text-decoration: none;
-    color: black;
-    transition: opacity 500ms ease-in-out;
+    background: transparent;
+    cursor: pointer; 
 }
 
-.links > p > a:hover {
-    opacity: 0.5;
+.text-center {
+    border:none;
+}
+
+.container {
+    background-color: white;
+    margin-bottom: 10em;
+    position: relative;
+    top: 5em;
+    padding: 20px;
+}
+
+.title {
+    text-align:center;   
 }

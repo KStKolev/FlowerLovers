@@ -4,6 +4,6 @@ namespace FlowerLovers.Core.Contracts.ArticleServices
 {
     public interface IArticleService
     {
-        public Task<IEnumerable<ArticleModel>> GetArticles();
+        public Task<ArticleModel> GetArticles(int currentPage, int articlesPerPage);
     }
 }

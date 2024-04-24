@@ -1,0 +1,72 @@
+﻿/*
+    search article container
+*/
+
+.search-article-container {
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    margin-bottom: 12em;
+    top: 8em;
+}
+
+/*
+    search article header
+*/
+
+.search-container {
+   position:relative;
+   top: 1.5em;
+}
+
+.search-container > h1 {
+    text-align: center;
+}
+
+/*
+    search header pagination
+*/
+
+.search-header-pagination {
+    width: max-content;
+    position: relative;
+    top: 4em;
+    left: 32%;
+    margin: 5em;
+}
+
+.search-header-pagination > a {
+    border: none;
+    border-radius: 4px;
+    margin: 1em;
+    background-color: palegoldenrod;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.search-header-pagination > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
+    search currentPage pagination
+*/
+
+.search-current-page-header {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    bottom: 7.2em;
+    left: 95%;
+}
+
+.search-current-page-footer {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    left: 95%;
+    bottom: 0.5em
+}

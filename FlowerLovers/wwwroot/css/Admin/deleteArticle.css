@@ -1,0 +1,48 @@
+﻿/*
+    delete article container
+*/
+
+.delete-article-container {
+    display: grid;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: white;
+    width:max-content;
+    margin-bottom: 20em;
+    position: relative;
+    top: 10em;
+    left: 36%;
+    transition: background-color 500ms ease-in-out;
+}
+
+.delete-article-container:hover {
+    background-color: lightyellow;
+    transition: background-color 500ms ease-in-out;
+}
+
+/*
+    delete article container content
+*/
+
+.delete-article-container > h1, .delete-article-container > span {
+    text-align: center;
+    margin: 0.5em;
+}
+
+.delete-article-container > a {
+    width: 60%;
+    border: none;
+    border-radius: 4px;
+    background-color: pink;
+    padding: 2em;
+    margin: 1em;
+    position: relative;
+    left: 14%;
+    transition: 500ms ease-in-out
+}
+
+.delete-article-container > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}

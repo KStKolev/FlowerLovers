@@ -1,8 +1,9 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data;
-using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlowerLovers.Core.Services.ArticleServices
@@ -16,18 +17,20 @@ namespace FlowerLovers.Core.Services.ArticleServices
             data = _data;
         }
 
-        public async Task<IEnumerable<ArticleModel>> SavedArticles(string userId)
+        public async Task<ArticleModel> SavedArticles(string userId, int currentPage, int articlesPerPage)
         {
             if (userId == null)
             {
                 throw new ArgumentException(nameof(userId));
             }
 
-            var user = await data.Users.FindAsync(userId);
+            var user = await data
+                .Users
+                .FindAsync(userId);
 
             if (user == null) 
             {
-                throw new UserNullException(nameof(user));
+                throw new UserNullException(UserDataConstants.USER_NULL_MESSAGE);
             }
 
             var userAccount = await data
@@ -36,24 +39,33 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (userAccount == null) 
             {
-                throw new UserAccountNullException(nameof(userAccount));
+                throw new UserAccountNullException(UserAccountDataConstants.USER_ACCOUNT_ERROR_MESSAGE);
             }
 
-            var articlesParticipants = await data
+            var articleIds = await 
+                data
                 .ArticlesParticipants
                 .Where(ap => ap.UserAccountId == userAccount.Id)
-                .Select(ap => new ArticleModel
-                (
-                    ap.ArticleId,
-                    ap.Article.Title,
-                    ap.UserAccount.Username,
-                    ap.UserAccount.ImageUrl,
-                    ap.Article.ImageUrl,
-                    ap.Article.Content
-                ))
+                .Select(ap => ap.ArticleId)
                 .ToListAsync();
 
-            return articlesParticipants;
+            var articles = await data.Articles
+           .Where(a => articleIds.Contains(a.Id))
+           .Skip((currentPage - 1) * articlesPerPage)
+           .Take(articlesPerPage)
+           .ToListAsync();
+
+            var totalItems = articleIds.Count();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)articlesPerPage);
+
+            ArticleModel model = new ArticleModel
+            {
+                Articles = articles,
+                TotalPages = totalPages,
+                CurrentPage = currentPage,
+            };
+
+            return model;
         }
     }
 }

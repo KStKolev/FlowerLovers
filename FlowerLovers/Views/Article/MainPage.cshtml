@@ -1,12 +1,28 @@
-﻿@model IEnumerable<ArticleModel>
+﻿@model ArticleModel
 
 <section class="main-page-container">
     <h1>
         Main Page
     </h1>
-    <hr/>
+    <hr />
+    @if (Model.TotalPages > 1)
+    {
+        <div class="main-header-pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="@Url.Action("MainPage", new { page = Model.CurrentPage - 1 })">Previous</a>
+            }
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a href="@Url.Action("MainPage", new { page = Model.CurrentPage + 1 })">Next</a>
+            }
+        </div>
+    }
+    <span class="main-current-page-header">
+        @Model.CurrentPage
+    </span>
     <div class="articles-container">
-        @foreach (var article in Model)
+        @foreach (var article in Model.Articles)
         {
             <article class="article-container">
                 <h3>
@@ -14,7 +30,7 @@
                 </h3>
                 <hr class="article-header-line" />
                 <div class="article-border-content">
-                    <img src="@Url.Content(@"~/" + article.ArticleImageUrl)" alt="article image" />
+                    <img src="@Url.Content(@"~/" + article.ImageUrl)" alt="article image" />
                     <h4>
                         Information about the flower:
                     </h4>
@@ -30,13 +46,23 @@
                         <a asp-action="Details" asp-controller="Article" asp-route-articleId="@article.Id">DETAILS</a>
                     </div>
                 </div>
-                <div class="publisher-container">
-                    <h6>
-                        Publisher: @article.PublisherName
-                    </h6>
-                    <img src="@Url.Content(@"~/" + article.UserImageUrl)" alt="publisher image" />
-                </div>
             </article>
         }
     </div>
+    @if (Model.TotalPages > 1)
+    {
+        <div class="main-header-pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="@Url.Action("MainPage", new { page = Model.CurrentPage - 1 })">Previous</a>
+            }
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <a href="@Url.Action("MainPage", new { page = Model.CurrentPage + 1 })">Next</a>
+            }
+        </div>
+    }
+    <span class="main-current-page-footer">
+        @Model.CurrentPage
+    </span>
 </section>

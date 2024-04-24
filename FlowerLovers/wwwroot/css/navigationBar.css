@@ -16,6 +16,8 @@
     height: inherit;
     display: flex;
     justify-content: center;
+    position: relative;
+    right: 6em;
 }
 
 .nav-hidden {
@@ -30,7 +32,7 @@
     width: 50px;
     position: relative;
     bottom: 0.6em;
-    right: 40%;
+    left: 20%;
 }
 
 
@@ -39,12 +41,7 @@
 */
 
 .nav-list > li {
-    margin: 1em 8em auto 0;
-    position: relative;
-    left: 2.5%;
-}
-
-.nav-user {
+    margin: 1em 2em auto 7em;
     position: relative;
 }
 
@@ -54,7 +51,7 @@
 }
 
 .nav-register, .nav-logIn {
-    position:relative;
+    position: relative;
     bottom: 0.5em;
 }
 
@@ -74,6 +71,10 @@
     transition: all 0.5s ease;
 }
 
+.nav-display .nav-articles {
+    position: relative;
+}
+
 .nav-user:hover .dropdown-menu {
     margin-top: 0px;
     opacity: 1;
@@ -81,11 +82,336 @@
     transition: all 0.5s ease;
 }
 
-.dropdown-menu li {
+.dropdown-menu li{
     padding: 10px;
 }
 
 .dropdown-menu li:hover {
     background-color: lightyellow;
     transition: 0.5s ease-in-out;
+}
+
+#searchForm {
+    display: flex;
+}
+
+#searchForm > input {
+    outline: none;
+    border: 2px groove;
+    border-radius: 4px;
+    width: 10em;
+}
+
+#searchForm > button {
+    border: 2px groove;
+    border-radius: 4px;
+    transition: 300ms ease-in-out;
+}
+
+#searchForm > button:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.index {
+    margin: 2em;
+    position: relative;
+}
+
+/* For screens between 1024px and 1440px (tablets) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .nav-display {
+        height: 60px;
+    }
+
+    .nav-hidden {
+        transform: translateY(-60px);
+    }
+
+    .nav-list {
+        position: relative;
+        left: 1%;
+    }
+
+    .nav-list > li {
+        font-size: 1em;
+        margin: 1em;
+    }
+
+    .nav-logo > img {
+        width: 50px;
+        margin-left: 1.5em;
+        margin-right: 1.5em;
+    }
+
+    .nav-user {
+        position: relative;
+        top: 0.2em;
+    }
+
+    #logout {
+        font-size: 1em;
+        position: relative;
+        top: 0.02em;
+    }
+
+    .dropdown-menu {
+        min-width: 30px;
+        font-size: 1em;
+        padding: 0;
+    }
+
+    .dropdown-menu > li {
+        padding: 1em;
+        border-radius: 4px;
+    }
+
+    .main-page-button {
+        margin-right: 2em;
+    }
+
+    #searchForm {
+        position: relative;
+    }
+}
+
+/* For screens smaller than 768px (phones) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav-display {
+        height: 40px;
+    }
+
+    .nav-hidden {
+        transform: translateY(-40px);
+    }
+
+    .nav-list {
+        position: relative;
+        left: 1%;
+    }
+
+    .nav-list > li {
+        font-size: 0.5em;
+        margin: 1em;
+    }
+
+    .nav-logo > img {
+        width: 35px;
+        margin-left: 1.5em;
+    }
+
+    .nav-user {
+        position: relative;
+        top: 1em;
+    }
+
+    #logout {
+        font-size: 1em;
+        position: relative;
+        top: 0.5em;
+    }
+
+    .dropdown-menu {
+        min-width: 30px;
+        font-size: 0.8em;
+        padding: 0;
+    }
+
+        .dropdown-menu > li {
+            padding: 1em;
+            border-radius: 4px;
+        }
+
+    .main-page-button {
+        margin-right: 2em;
+    }
+
+    .nav-link.text-dark {
+        position: relative;
+        bottom: 0.5em;
+    }
+
+    #searchForm {
+        position: relative;
+        top: 0.5em;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+    .nav-display {
+        height: 35px;
+    }
+
+    .nav-hidden {
+        transform: translateY(-35px);
+    }
+
+    .nav-list {
+        position: relative;
+        left: 1%;
+    }
+
+        .nav-list > li {
+            font-size: 0.5em;
+            margin: 1em;
+        }
+
+    .nav-logo > img {
+        width: 25px;
+        margin-left: 2em;
+    }
+
+    .nav-user {
+        position: relative;
+        top: 0.5em;
+    }
+
+    #logout {
+        font-size: 1em;
+        position: relative;
+        top: 0.02em;
+    }
+
+    .dropdown-menu {
+        min-width: 30px;
+        font-size: 0.8em;
+        padding: 0;
+    }
+
+        .dropdown-menu > li {
+            padding: 1em;
+            border-radius: 4px;
+        }
+
+    .main-page-button {
+        margin-right: 2em;
+    }
+
+    .nav-link.text-dark {
+        position: relative;
+        bottom: 0.5em;
+    }
+
+    #searchForm {
+        position: relative;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+    .nav-display {
+        height: 25px;
+    }
+
+    .nav-hidden {
+        transform: translateY(-25px);
+    }
+
+    .nav-list {
+        position: relative;
+        left: 1%;
+    }
+
+        .nav-list > li {
+            font-size: 0.4em;
+            margin: 1em;
+        }
+
+    .nav-logo > img {
+        width: 20px;
+        margin-left: 2em;
+    }
+
+    .nav-user {
+        position: relative;
+        top: 0.5em;
+    }
+
+    #logout {
+        font-size: 1em;
+    }
+
+    .dropdown-menu {
+        min-width: 30px;
+        font-size: 0.8em;
+        padding: 0;
+    }
+
+        .dropdown-menu > li {
+            padding: 1em;
+            border-radius: 4px;
+        }
+
+    .main-page-button {
+        margin-right: 2em;
+    }
+
+    .nav-link.text-dark {
+        position: relative;
+        bottom: 0.5em;
+    }
+
+    #searchForm {
+        position: relative;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav-list {
+        width: max-content;
+    }
+
+    .nav-display {
+        height: 20px;
+    }
+
+    .nav-hidden {
+        transform: translateY(-20px);
+    }
+
+    .nav-list {
+        position: relative;
+        left: 10%;
+        bottom: 0.2em;
+    }
+
+        .nav-list > li {
+            font-size: 0.3em;
+            margin: 2em;
+        }
+
+    .nav-logo > img {
+        width: 15px;
+    }
+
+    #logout {
+        font-size: 1em;
+        padding: 0;
+        position: relative;
+        top: 0.5em;
+    }
+
+    .dropdown-menu {
+        min-width: 30px;
+        font-size: 0.8em;
+        padding: 0;
+    }
+
+        .dropdown-menu > li {
+            padding: 1em;
+            border-radius: 4px;
+        }
+
+    .main-page-button {
+    }
+
+    .nav-link.text-dark {
+        position: relative;
+        bottom: 1.3em;
+    }
+
+    #searchForm {
+        position: relative;
+        bottom: 0.3em;
+    }
 }

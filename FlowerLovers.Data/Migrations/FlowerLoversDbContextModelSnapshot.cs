@@ -46,6 +46,9 @@ namespace FlowerLovers.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -101,19 +104,39 @@ namespace FlowerLovers.Data.Migrations
                         {
                             Id = "dea12856-c198-4129-b3f3-b893d8395082",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6cb8d19e-1ce3-441f-9d78-ae589df1672b",
-                            Email = "admin@mail.com",
+                            ConcurrencyStamp = "40022495-0c33-41ef-90fb-8bcc040e1f04",
+                            Email = "adminKolev@mail.com",
                             EmailConfirmed = false,
                             FirstName = "Kolio",
+                            IsAdmin = true,
                             LastName = "Kolev",
                             LockoutEnabled = false,
-                            NormalizedEmail = "admin@mail.com",
-                            NormalizedUserName = "admin@mail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGZxgmqwqaDZJRRzA6f0YBVNW3R6LzEo/A5q6Efs9bM2TrN2DXtsFADZzcFv0661ug==",
+                            NormalizedEmail = "ADMINKOLEV@MAIL.COM",
+                            NormalizedUserName = "ADMINKOLEV",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAbNcfgtRJSdgxNKv/oZK6vQt7CIa3zfJcNtkv9HvF6ZOlrqn6n/GKlXvbg78+jK6w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "16abb685-e35f-4afe-a88d-1f8d53a73a7a",
+                            SecurityStamp = "c6b786d3-1c52-49aa-a4aa-9143e75d898a",
                             TwoFactorEnabled = false,
-                            UserName = "admin@mail.com"
+                            UserName = "adminKolev"
+                        },
+                        new
+                        {
+                            Id = "a2c10gb6-c198-1199-a7ft-b7p3f139c082",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "18f41241-2cef-4934-b6cf-77708b3e8423",
+                            Email = "adminVladimirova@mail.com",
+                            EmailConfirmed = false,
+                            FirstName = "Magdalena",
+                            IsAdmin = true,
+                            LastName = "Vladimirova",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMINVLADIMIROVA@MAIL.COM",
+                            NormalizedUserName = "ADMINVLADIMIROVA",
+                            PasswordHash = "AQAAAAEAACcQAAAAEE6uhSUcULlIRAD9lfvGbWKpb917p1p8Aip1iOAfdkpjWI6dclSxdVWrvmsmjVeh9w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "c2b9c1a0-bf43-4d43-8969-924443a55162",
+                            TwoFactorEnabled = false,
+                            UserName = "adminVladimirova"
                         });
                 });
 

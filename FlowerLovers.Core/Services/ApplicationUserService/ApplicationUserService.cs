@@ -25,7 +25,7 @@ namespace FlowerLovers.Core.Services.ApplicationUserService
 
                 if (user == null)
                 {
-                    throw new UserNullException(USERNULLMESSAGE);
+                    throw new UserNullException(USER_NULL_MESSAGE);
                 }
 
                 if (string.IsNullOrEmpty(user.FirstName)
@@ -34,7 +34,7 @@ namespace FlowerLovers.Core.Services.ApplicationUserService
                     )
                 {
                     // Create a custom exception.
-                    throw new NameNullOrEmptyException(NAMEERRORMESSAGE);
+                    throw new NameNullOrEmptyException(NAME_ERROR_MESSAGE);
                 }
 
                 return user.FirstName + " " + user.LastName;

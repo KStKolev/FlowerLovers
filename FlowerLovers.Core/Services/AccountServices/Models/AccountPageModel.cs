@@ -11,11 +11,12 @@ namespace FlowerLovers.Core.Services.AccountServices.Models
         MinimumLength = USERNAMEMINLENGTH)]
         public string Username { get; set; } = string.Empty;
 
+        public int UserAccountId { get; set; }
+
         [Required]
         [Display(Name = "Image URL")]
         public string ImageUrl { get; set; } = null!;
         public string Biography { get; set; } = string.Empty;
-        public int Followers { get; set; }
         public int Articles { get; set; }
 
         [Display(Name = "Date Of Creation")]

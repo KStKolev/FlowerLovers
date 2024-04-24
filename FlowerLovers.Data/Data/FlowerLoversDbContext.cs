@@ -18,26 +18,11 @@ namespace FlowerLovers.Data.Data
         public DbSet<Rate> Rates { get; set; } = null!;
         public DbSet<ArticleParticipant> ArticlesParticipants { get; set; } = null!;
 
-        private ApplicationUser AdminUser { get; set; } = null!;
+        private ApplicationUser AdminUser1 { get; set; } = null!;
+        private ApplicationUser AdminUser2 { get; set; } = null!;
         private Category AmusementCategory { get; set; } = null!;
         private Category EducationalCategory { get; set; } = null!;
         private Category AppealCategory { get; set; } = null!;
-
-        private void SeedApplicationUser() 
-        {
-            var hasher = new PasswordHasher<ApplicationUser>();
-            AdminUser = new ApplicationUser()
-            {
-                Id = "dea12856-c198-4129-b3f3-b893d8395082",
-                UserName = "admin@mail.com",
-                NormalizedUserName = "admin@mail.com",
-                Email = "admin@mail.com",
-                NormalizedEmail = "admin@mail.com",
-                FirstName = "Kolio",
-                LastName = "Kolev"
-            };
-            AdminUser.PasswordHash = hasher.HashPassword(AdminUser, "admin123");
-        }
 
         private void SeedCategory() 
         {
@@ -58,6 +43,39 @@ namespace FlowerLovers.Data.Data
                 Id = 3,
                 Name = "Appeal"
             };
+        }
+
+        private void SeedAdminUsers()
+        {
+            var hasher = new PasswordHasher<ApplicationUser>();
+
+            AdminUser1 = new ApplicationUser
+            {
+                Id = "dea12856-c198-4129-b3f3-b893d8395082",
+                UserName = "adminKolev",
+                NormalizedUserName = "ADMINKOLEV",
+                Email = "adminKolev@mail.com",
+                NormalizedEmail = "ADMINKOLEV@MAIL.COM",
+                FirstName = "Kolio",
+                LastName = "Kolev",
+                IsAdmin = true
+            };
+
+            AdminUser1.PasswordHash = hasher.HashPassword(AdminUser1, "adminKolev");
+
+            AdminUser2 = new ApplicationUser
+            {
+                Id = "a2c10gb6-c198-1199-a7ft-b7p3f139c082",
+                UserName = "adminVladimirova",
+                NormalizedUserName = "ADMINVLADIMIROVA",
+                Email = "adminVladimirova@mail.com",
+                NormalizedEmail = "ADMINVLADIMIROVA@MAIL.COM",
+                FirstName = "Magdalena",
+                LastName = "Vladimirova",
+                IsAdmin = true
+            };
+
+            AdminUser2.PasswordHash = hasher.HashPassword(AdminUser2, "adminVladimirova");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -97,7 +115,6 @@ namespace FlowerLovers.Data.Data
                 .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             //Seed Categories
             SeedCategory();
             builder.Entity<Category>()
@@ -106,10 +123,12 @@ namespace FlowerLovers.Data.Data
                 EducationalCategory, 
                 AppealCategory);
 
-            //Seed Application Users
-            SeedApplicationUser();
+            //Seed Admin users
+            SeedAdminUsers();
             builder.Entity<ApplicationUser>()
-                .HasData(AdminUser);
+                .HasData(
+                AdminUser1, 
+                AdminUser2);
 
             base.OnModelCreating(builder);
         }

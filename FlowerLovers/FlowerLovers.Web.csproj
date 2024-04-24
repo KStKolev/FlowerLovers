@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArticleManagementTests\UserManagementTests.csproj" />
     <ProjectReference Include="..\FlowerLovers.Core\FlowerLovers.Core.csproj" />
     <ProjectReference Include="..\FlowerLovers.Data\FlowerLovers.Data.csproj" />
   </ItemGroup>

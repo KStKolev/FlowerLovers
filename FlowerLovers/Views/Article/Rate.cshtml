@@ -1,20 +1,24 @@
 ﻿@model RateModel
 
 <section class="rate-article-container">
-    <h1>Rate article</h1>
-    <hr/>
-    <div class="rate-form">
-        <form asp-action="Rate" asp-controller="Article" asp-route-articleId="@Model.ArticleId" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <select asp-for="Rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
-            <button type="submit">Rate</button>
-        </form>
+    <div class="container">
+        <h1>Rate article</h1>
+        <hr />
+        <div class="rate-form">
+            <form asp-action="Rate" asp-controller="Article" asp-route-articleId="@Model.ArticleId" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <select asp-for="Rating" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Rate</button>
+            </form>
+        </div>
     </div>
 </section>

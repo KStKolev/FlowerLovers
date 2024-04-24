@@ -4,6 +4,6 @@ namespace FlowerLovers.Core.Contracts.ArticleServices
 {
     public interface ISavedArticleService
     {
-        public Task<IEnumerable<ArticleModel>> SavedArticles(string userId);
+        public Task<ArticleModel> SavedArticles(string userId, int currentPage, int articlesPerPage);
     }
 }

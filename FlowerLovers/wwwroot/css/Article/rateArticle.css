@@ -1,60 +1,51 @@
-﻿/*
+﻿/* 
     rate article container
 */
 
 .rate-article-container {
-    width: 40%;
     border: 1px solid;
     border-radius: 4px;
     background-color: white;
     margin-bottom: 20em;
     position: relative;
     top: 12em;
-    left: 30%;
-    transition: background-color 500ms ease-in-out;
 }
 
 .rate-article-container:hover {
     background-color: lightyellow;
-    transition: background-color 500ms ease-in-out;
 }
 
-/*
-    rate article header
+/* 
+    rate article header 
 */
 
 .rate-article-container > h1 {
     text-align: center;
-    margin: 0.5em
+    margin: 0.5em;
 }
 
 .rate-article-container > hr {
     width: 35%;
-    position: relative;
-    left: 32%;
+    margin: 0 auto;
 }
 
-/*
-    rate artcle form
+/* 
+    rate article form 
 */
 
 .rate-form {
     width: max-content;
     margin-bottom: 5em;
-    position: relative;
-    top: 2em;
-    left: 35%;
+    margin: 0 auto;
 }
 
-/*
-    rate artcle form contents
+/* 
+    rate article form contents
 */
 
 .rate-form > form > select {
     border-radius: 4px;
     margin-right: 0.5em;
-    background-color: transparent;
-    outline: none;
 }
 
 .rate-form > form > select > option {
@@ -62,14 +53,12 @@
 }
 
 .rate-form > form > button {
-    border: none;
     border-radius: 4px;
-    padding: 2em;
-    transition: 300ms ease-in-out;
+    padding: 0.5em 2em;
+    margin-top: 1em;
 }
 
-.rate-form > form > button:hover{
+.rate-form > form > button:hover {
     opacity: 0.8;
-    transition: 300ms ease-in-out;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }

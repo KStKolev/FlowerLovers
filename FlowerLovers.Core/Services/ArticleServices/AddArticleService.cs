@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Core.Services.AccountServices.Models.DataRequirements;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data;
@@ -43,7 +44,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (imagePath == null)
             {
-                throw new ImageNullException("The given image was empty.");
+                throw new ImageNullException(ImageDataConstants.IMAGE_MESSAGE_ERROR);
             }
 
             var category = await data
@@ -74,33 +75,24 @@ namespace FlowerLovers.Core.Services.ArticleServices
         {
             if (model.ImageFile != null && model.ImageFile.Length > 0)
             {
-                //Get file name and path to the directory.
+                // Get file name and path to the directory.
                 string fileName = model.ImageFile.FileName;
                 string relativePath = Path.Combine("Content", "Images", fileName);
                 string absolutePath = Path.Combine(environment.WebRootPath, relativePath);
 
-                //Get the directory or create it, if it's not already.
+                // Get the directory or create it if it's not already.
                 var directory = Path.GetDirectoryName(absolutePath);
                 if (!Directory.Exists(directory) && directory != null)
                 {
                     Directory.CreateDirectory(directory);
                 }
 
-                bool isCreated = false;
-
-                if (directory != null && Directory.GetFiles(directory, fileName).Length > 0)
+                // Set the file to the directory.
+                using (var stream = new FileStream(absolutePath, FileMode.Create))
                 {
-                    isCreated = true;
+                    model.ImageFile.CopyTo(stream);
                 }
 
-                if (isCreated == false)
-                {
-                    // Set the file to the directory.
-                    using (var stream = new FileStream(absolutePath, FileMode.Create))
-                    {
-                        model.ImageFile.CopyTo(stream);
-                    }
-                }
                 return relativePath;
             }
 

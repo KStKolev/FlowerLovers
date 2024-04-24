@@ -14,20 +14,25 @@ namespace FlowerLovers.Core.Services.ArticleServices
             data = _data;
         }
 
-        public async Task<IEnumerable<ArticleModel>> GetArticles()
+        public async Task<ArticleModel> GetArticles(int currentPage, int articlesPerPage)
         {
-            var articles = await data.Articles.Select(a => new ArticleModel
-            (
-                a.Id,
-                a.Title,
-                a.UserAccount.Username,
-                a.UserAccount.ImageUrl,
-                a.ImageUrl,
-                a.Content
-            ))
+            var totalItems = data.Articles.Count();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)articlesPerPage);
+
+            var articles = await data
+                .Articles
+                .Skip((currentPage - 1) * articlesPerPage)
+                .Take(articlesPerPage)
                 .ToListAsync();
 
-            return articles;
+            var articleModel = new ArticleModel
+            {
+                Articles = articles,
+                CurrentPage = currentPage,
+                TotalPages = totalPages
+            };
+
+            return articleModel;
         }
     }
 }

@@ -28,3 +28,46 @@
     text-align: center;
 }
 
+
+/*
+    saved container pagination elements
+*/
+
+.saved-current-page-header {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    bottom: 8.5em;
+    left: 96%;
+}
+
+.saved-current-page-footer {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    bottom: 0.8em;
+    left: 96%;
+}
+
+.saved-header-pagination {
+    width: max-content;
+    position: relative;
+    left: 32%;
+    margin: 5em;
+}
+
+.saved-header-pagination > a {
+    border: none;
+    border-radius: 4px;
+    margin: 1em;
+    background-color: palegoldenrod;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.saved-header-pagination > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+

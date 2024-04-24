@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data;
 using FlowerLovers.Data.Data.Models;
@@ -41,6 +42,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
                     a.Id,
                     a.Title,
                     a.UserAccount.Username,
+                    a.UserAccountId,
                     a.UserAccount.ImageUrl,
                     a.ImageUrl,
                     a.Content,
@@ -51,7 +53,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (detailsArticle == null)
             {
-                throw new DetailsArticleNullException(nameof(detailsArticle));
+                throw new DetailsArticleNullException(DetailsArticleDataConstants.DETAILS_ARTICLE_ERROR_MESSAGE);
             }
 
             return detailsArticle;
