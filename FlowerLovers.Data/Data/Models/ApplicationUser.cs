@@ -19,5 +19,8 @@ namespace FlowerLovers.Data.Data.Models
             MinimumLength = LASTNAMEMINLENGTH
             )]
         public string LastName { get; set; } = string.Empty;
+
+        [Required]
+        public bool IsAdmin { get; set; }
     }   
 }

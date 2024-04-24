@@ -1,4 +1,5 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
+using FlowerLovers.Core.Contracts.SearchServices;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,7 @@ namespace FlowerLovers.Web.Controllers
         private readonly IDetailsArticleService detailsArticleService;
         private readonly IRateService rateService;
         private readonly IEditArticleService editArticleService;
+        private readonly IFilterArticlesService filterArticlesService;
 
         public ArticleController(
             IAddArticleService _addArticleService, 
@@ -27,7 +29,8 @@ namespace FlowerLovers.Web.Controllers
             ILeaveArticleService _leaveService,
             IDetailsArticleService _detailsArticleService,
             IRateService _rateService,
-            IEditArticleService _editArticleService)
+            IEditArticleService _editArticleService,
+            IFilterArticlesService _filterArticlesService)
         {
             addArticleService = _addArticleService;
             articleServices = _articleServices;
@@ -37,13 +40,15 @@ namespace FlowerLovers.Web.Controllers
             detailsArticleService = _detailsArticleService;
             rateService = _rateService;
             editArticleService = _editArticleService;
+            filterArticlesService = _filterArticlesService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> MainPage() 
+        public async Task<IActionResult> MainPage(int page = 1, int pageSize = 3)
         {
-            IEnumerable<ArticleModel> model = await articleServices
-                .GetArticles();
+            ArticleModel model = await articleServices
+            .GetArticles(page, pageSize);
+            
             return View(model);
         }
 
@@ -77,10 +82,14 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Saved() 
+        public async Task<IActionResult> Saved(int page = 1, int pageSize = 3) 
         {
             string userId = User.UserId();
-            var savedarticles = await savedService.SavedArticles(userId);
+
+            var savedarticles = await 
+                savedService
+                .SavedArticles(userId, page, pageSize);
+
             return View(savedarticles);
         }
 

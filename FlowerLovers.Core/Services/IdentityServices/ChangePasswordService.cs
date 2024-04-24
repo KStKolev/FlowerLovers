@@ -39,7 +39,10 @@ namespace FlowerLovers.Core.Services.IdentityServices
                 return Page();
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await 
+                _userManager
+                .FindByIdAsync(userId);
+
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");

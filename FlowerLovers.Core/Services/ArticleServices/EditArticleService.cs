@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (user == null)
             {
-                throw new UserNullException(nameof(user));
+                throw new UserNullException(UserDataConstants.USER_NULL_MESSAGE);
             }
 
             var articleToEdit = await data
@@ -41,7 +42,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (articleToEdit == null)
             {
-                throw new ArticleNullException(nameof(articleToEdit));
+                throw new ArticleNullException(ArticleDataConstants.ARTICLE_ERROR_MESSAGE);
             }
 
             var editArticleModel = new EditArticleModel
@@ -55,7 +56,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (editArticleModel == null)
             {
-                throw new ArticleNullException(nameof(editArticleModel));
+                throw new ArticleNullException(ArticleDataConstants.ARTICLE_ERROR_MESSAGE);
             }
 
             return editArticleModel;
@@ -69,7 +70,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (articleToEdit == null)
             {
-                throw new ArticleNullException(nameof(articleToEdit));
+                throw new ArticleNullException(ArticleDataConstants.ARTICLE_ERROR_MESSAGE);
             }
 
             if (model.Title != null)

@@ -1,6 +1,5 @@
 ﻿#nullable disable
 
-using FlowerLovers.Core.Contracts;
 using FlowerLovers.Core.Contracts.IdentityServices;
 using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;

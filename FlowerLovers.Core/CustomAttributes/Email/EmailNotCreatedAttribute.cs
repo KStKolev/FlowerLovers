@@ -10,6 +10,7 @@ namespace FlowerLovers.Core.CustomAttributes.Email
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             var userManager = validationContext.GetRequiredService<UserManager<ApplicationUser>>();
+
             var email = value as string;
 
             if (email != null && !IsAlreadyCreated(email, userManager))

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CustomAttributes\Filters\" />
+    <Folder Include="Services\SearchServices\Models\" />
   </ItemGroup>
 
 </Project>

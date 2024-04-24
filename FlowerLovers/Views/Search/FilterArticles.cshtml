@@ -1,0 +1,68 @@
+﻿<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="edit-page-container">
+                <h1>Main Page</h1>
+                <hr />
+                @if (Model.TotalPages > 1)
+                {
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <a href="@Url.Action("FilterArticles", new { category = ViewBag.Category, currentPage = Model.CurrentPage - 1 })" class="btn btn-primary">Previous</a>
+                            }
+                        </div>
+                        <div class="col-md-6 text-center">
+                            @if (Model.CurrentPage < Model.TotalPages)
+                            {
+                                <a href="@Url.Action("FilterArticles", new { category = ViewBag.Category, currentPage = Model.CurrentPage + 1 })" class="btn btn-primary">Next</a>
+                            }
+                        </div>
+                    </div>
+                }
+                <span class="filter-current-page-header">@Model.CurrentPage</span>
+                <div class="articles-container">
+                    @foreach (var article in Model.Articles)
+                    {
+                        <article class="article-container">
+                            <h3>@article.Title</h3>
+                            <hr class="article-header-line" />
+                            <div class="article-border-content">
+                                <img src="@Url.Content(@"~/" + article.ImageUrl)" alt="article image" class="img-fluid" />
+                                <h4>Information about the flower:</h4>
+                                <hr class="article-content-line" />
+                                <p>@article.Content</p>
+                                <div class="article-form-content">
+                                    <form asp-action="Save" asp-controller="Article" asp-route-articleId="@article.Id" method="post" enctype="multipart/form-data">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <button type="submit" class="btn btn-success">SAVE</button>
+                                    </form>
+                                    <a asp-action="Details" asp-controller="Article" asp-route-articleId="@article.Id" class="btn btn-info">DETAILS</a>
+                                </div>
+                            </div>
+                        </article>
+                    }
+                </div>
+                @if (Model.TotalPages > 1)
+                {
+                    <div class="row mt-3">
+                        <div class="col-md-6 text-center">
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <a href="@Url.Action("FilterArticles", new { category = ViewBag.Category, currentPage = Model.CurrentPage - 1 })" class="btn btn-primary">Previous</a>
+                            }
+                        </div>
+                        <div class="col-md-6 text-center">
+                            @if (Model.CurrentPage < Model.TotalPages)
+                            {
+                                <a href="@Url.Action("FilterArticles", new { category = ViewBag.Category, currentPage = Model.CurrentPage + 1 })" class="btn btn-primary">Next</a>
+                            }
+                        </div>
+                    </div>
+                }
+                <span class="filter-current-page-footer">@Model.CurrentPage</span>
+            </div>
+        </div>
+    </div>
+</section>

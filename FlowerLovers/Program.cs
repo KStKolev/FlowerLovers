@@ -1,17 +1,27 @@
 using FlowerLovers.Core.Contracts.AccountService;
+using FlowerLovers.Core.Contracts.AdminServices;
 using FlowerLovers.Core.Contracts.ApplicationServices;
 using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.Contracts.IdentityServices;
+using FlowerLovers.Core.Contracts.SearchServices;
+using FlowerLovers.Core.CustomFilters;
 using FlowerLovers.Core.Services.AccountServices;
+using FlowerLovers.Core.Services.AdminService;
 using FlowerLovers.Core.Services.ApplicationUserService;
 using FlowerLovers.Core.Services.ArticleServices;
 using FlowerLovers.Core.Services.IdentityServices;
+using FlowerLovers.Core.Services.SearchServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add DB context
 builder.Services.AddApplicationDbContext(builder.Configuration);
+
+// Add Identity
+
 builder.Services.AddApplicationIdentity();
 
+// Add custom services
 builder.Services.AddTransient<IApplicationServiceUser, ApplicationUserService>();
 builder.Services.AddTransient<IRegisterService, RegisterService>();
 builder.Services.AddTransient<ILogInService, LogInService>();
@@ -31,6 +41,12 @@ builder.Services.AddTransient<ILeaveArticleService, LeaveArticleService>();
 builder.Services.AddTransient<IDetailsArticleService, DetailsArticleService>();
 builder.Services.AddTransient<IRateService, RateService>();
 builder.Services.AddTransient<IEditArticleService, EditArticleService>();
+builder.Services.AddScoped<AdminFilter>();
+builder.Services.AddTransient<IDeleteArticleService, DeleteArticleService>();
+builder.Services.AddTransient<IDeleteUserService, DeleteUserService>();
+builder.Services.AddTransient<IFilterArticlesService, FilterArticlesService>();
+builder.Services.AddTransient<ISearchArticleService, SearchArticleService>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -50,9 +66,19 @@ app.UseHttpsRedirection();
 // Use default static files from www.root folder.
 app.UseStaticFiles();
 app.UseRouting();
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseEndpoints(endpoints => 
+{
+    endpoints.MapControllerRoute(
+        name: "error",
+        pattern: "Error/{statusCode}",
+        defaults: new { controller = "Error", action = "HttpStatusCodeHandler" }
+        );
+});
 
 app.MapControllerRoute(
     name: "default",

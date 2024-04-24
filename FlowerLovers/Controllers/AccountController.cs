@@ -20,14 +20,15 @@ namespace FlowerLovers.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AccountPage() 
+        public async Task<IActionResult> AccountPage(int id) 
         {
             string userId = User.UserId();
-            var account = await accountService.CreateUserAccount(userId);
+            var account = await accountService.CreateUserAccount(id, userId);
 
             AccountPageModel model = new AccountPageModel()
             {
                 Username = account.Username,
+                UserAccountId = account.Id,
                 ImageUrl = account.ImageUrl,
                 Biography = account.Biography,
                 Articles = account.Articles.Count(),

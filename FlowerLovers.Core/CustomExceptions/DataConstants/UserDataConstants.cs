@@ -2,6 +2,6 @@
 {
     public static class UserDataConstants
     {
-        public const string USERNULLMESSAGE = "User not found.";
+        public const string USER_NULL_MESSAGE = "User not found.";
     }
 }

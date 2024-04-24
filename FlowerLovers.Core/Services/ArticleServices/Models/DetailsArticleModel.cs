@@ -5,7 +5,8 @@
         public DetailsArticleModel(
             int id,
             string title, 
-            string publisherName, 
+            string publisherName,
+            int publisherId,
             string publisherImageUrl,
             string articleImageUrl,
             string content, 
@@ -15,6 +16,7 @@
             Id = id;
             Title = title;
             PublisherName = publisherName;
+            PublisherId = publisherId;
             PublisherImageUrl = publisherImageUrl;
             ArticleImageUrl = articleImageUrl;
             Content = content;
@@ -25,6 +27,7 @@
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string PublisherName { get; set; } = string.Empty;
+        public int PublisherId { get; set; }
         public string PublisherImageUrl { get; set; } = string.Empty;
         public string ArticleImageUrl { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;

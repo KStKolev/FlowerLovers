@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Data.Data;
 using FlowerLovers.Data.Data.Models;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (articleToSave == null)
             {
-                throw new ArticleNullException(nameof(articleToSave));
+                throw new ArticleNullException(ArticleDataConstants.ARTICLE_ERROR_MESSAGE);
             }
 
             var user = await data
@@ -37,7 +38,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (user == null)
             {
-                throw new UserNullException(nameof(user));
+                throw new UserNullException(UserAccountDataConstants.USER_ACCOUNT_ERROR_MESSAGE);
             }
 
             var userAccount = await data
@@ -46,7 +47,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (userAccount == null) 
             {
-                throw new UserAccountNullException(nameof(userAccount));
+                throw new UserAccountNullException(UserAccountDataConstants.USER_ACCOUNT_ERROR_MESSAGE);
             }
 
             var articleParticipant = new ArticleParticipant()

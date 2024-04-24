@@ -6,6 +6,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--    Setting every stylesheet in the web application     -->
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/homePage.css" asp-append-version="true" />
@@ -27,29 +30,17 @@
         <link rel="stylesheet" href="~/css/Article/savedArticles.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/Article/rateArticle.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/Article/editArticle.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Admin/deleteArticle.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Filter/filterArticles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Filter/categoryFilter.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Search/searchArticles.css" asp-append-version="true" />
 
         <title>Flower Lovers</title>
     </head>
     <body>
     <header>
-        <nav class="nav-display">
+        <nav class="nav-display nav-articles">
             <ul class="nav-list">
-                <li class="nav-logo">
-                    <img class="logo" src="~/Content/Images/flower-logo.png" alt="logo" />
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </li>
-                <li>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <a asp-controller="Article" asp-action="MainPage">FlowerLovers</a>
-                    }
-                    else
-                    {
-                        <a asp-controller="Home" asp-action="Index">FlowerLovers</a>
-                    }
-                </li>
                 <partial name="_LoginPartial" />
             </ul>
         </nav>

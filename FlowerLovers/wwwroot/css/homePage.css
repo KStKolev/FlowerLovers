@@ -186,3 +186,460 @@
 footer > span {
     font-size: 1.2em;
 }
+
+@media (max-width: 320px) {
+    .home-title {
+        font-size: 1em;
+        margin: 1em;
+        position: relative;
+        top: 1.2em;
+        left: 9%;
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .about-us {
+        margin: 2em;
+    }
+
+    .about-us > hr {
+        height: 1.2px;
+        width: 30%;
+        position: relative;
+        left: 36%;
+        margin-bottom: 2em;
+    }
+
+    .about-us > h2 {
+        font-size: 1em;
+        margin-top: 2em;
+    }
+
+    .about-us > p {
+        width: 60%;
+        font-size: 0.5em;
+        margin-top: 1em;
+        position: relative;
+        left: 20%;
+    }
+
+    /* 
+        join us content 
+    */
+
+    .join-us {
+        margin: 1em;
+    }
+
+     /*
+        join us title container
+    */
+
+    .join-us.title {
+        margin-bottom: 4em;
+    }
+
+    .join-us.title > h2 {
+        font-size: 1em;
+    }
+
+    .join-us.title > hr {
+        width: 40%;
+    }
+        /*
+    join us bottom border
+    */
+    .join-us hr {
+        height: 1.2px;
+        width: 45%;
+        position: relative;
+        left: 30%;
+    }
+
+     /*
+        join us buttons
+    */
+
+    .register {
+        margin-right: 5em;
+    }
+
+    .login {
+        position:relative;
+        left: 40%;
+        bottom: 1.5em;
+    }
+
+    .join-us.buttons > a {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 375px) {
+    .home-title {
+        font-size: 1em;
+        margin: 1em;
+        position: relative;
+        top: 1.2em;
+        left: 9%;
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .about-us {
+        margin: 2em;
+    }
+
+    .about-us > hr {
+        height: 1.2px;
+        width: 30%;
+        position: relative;
+        left: 36%;
+        margin-bottom: 2em;
+    }
+
+    .about-us > h2 {
+        font-size: 1em;
+        margin-top: 2em;
+    }
+
+    .about-us > p {
+        width: 60%;
+        font-size: 0.5em;
+        margin-top: 1em;
+        position: relative;
+        left: 20%;
+    }
+
+    /* 
+        join us content 
+    */
+
+    .join-us {
+        margin: 1em;
+    }
+
+        /*
+        join us title container
+    */
+
+    .join-us.title {
+        margin-bottom: 4em;
+    }
+
+    .join-us.title > h2 {
+        font-size: 1em;
+    }
+
+    .join-us.title > hr {
+        width: 40%;
+    }
+
+    /*
+    join us bottom border
+    */
+
+    .join-us hr {
+        height: 1.2px;
+        width: 45%;
+        position: relative;
+        left: 30%;
+    }
+
+    /*
+        join us buttons
+    */
+
+    .register {
+        margin-right: 1.5em;
+    }
+
+    .join-us.buttons > a {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+    .home-title {
+        font-size: 1.2em;
+        margin: 1.5em auto 0.5em 1em;
+        position: relative;
+        top: 1em;
+        left: 12%;
+    }
+
+    .about-us {
+        margin: 2em;
+    }
+
+    .about-us > hr {
+        width: 30%;
+        left: 34%;
+    }
+
+    .about-us > h2 {
+        font-size: 1.1em;
+        margin-top: 1em;
+    }
+
+    .about-us > p {
+        width: 90%;
+        font-size: 0.4em;
+        margin-top: 1em;
+        left: 5%;
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .join-us {
+        width: 40%;
+        position: relative;
+        left: 2em;
+    }
+
+    .join-us.title {
+        margin: 1.5em;
+        width: 120px;
+        position: relative;
+        left: 0.01em;
+    }
+
+    .join-us h2 {
+        width: max-content;
+        font-size: 0.5em;
+    }
+
+    .join-us.title > hr {
+        width: 60%;
+        position:relative;
+        left: 1.5em;
+    }
+
+    .join-us.buttons {
+        width: max-content;
+        margin: 1em;
+        position: relative;
+        left: 2%;
+    }
+
+    .join-us.buttons > a {
+        font-size: 0.8em;
+        padding: 0.5em;
+    }
+
+    .register {
+        margin-right: 1em;
+    }
+
+    footer > span {
+        font-size: 0.5em;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+    .home-title {
+        font-size: 1.2em;
+        margin: 1.5em auto 0.5em 1em;
+        position: relative;
+        top: 1em;
+        left: 12%;
+    }
+
+    .about-us {
+        margin: 2em;
+    }
+
+    .about-us > hr {
+        width: 30%;
+        left: 34%;
+    }
+
+    .about-us > h2 {
+        font-size: 1.1em;
+        margin-top: 1em;
+    }
+
+    .about-us > p {
+        width: 90%;
+        font-size: 0.4em;
+        margin-top: 1em;
+        left: 5%;
+    }
+
+    .slider-nav {
+        display:none;
+    }
+
+    .join-us {
+        width: 33%;
+        position: relative;
+        left: 6em;
+    }
+
+    .join-us.title {
+        margin: 1.5em;
+        width: 120px;
+        position:relative;
+        left: 0.01em;
+    }
+
+    .join-us h2 {
+        font-size: 0.7em;
+    }
+
+    .join-us.title > hr {
+        width: 60%;
+        position:relative;
+        left: 1.7em;
+    }
+
+    .join-us.buttons {
+        width: max-content;
+        margin: 1em;
+        position: relative;
+        left: 5%;
+    }
+
+    .join-us.buttons > a {
+        font-size: 0.8em;
+        padding: 0.5em;
+    }
+
+    .register {
+        margin-right: 1em;
+    }
+
+    footer > span {
+        font-size: 0.5em;
+    }
+}
+
+/* For screens between 768px and 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .home-title {
+        font-size: 2em;
+        margin: 4em auto 1em 2em;
+        position: relative;
+        left: 5%;
+    }
+
+    .about-us {
+        margin: 3em;
+    }
+
+    .about-us > hr {
+        width: 18%;
+        left: 42%;
+    }
+
+    .about-us > h2 {
+        font-size: 2.2em;
+        margin-top: 1.5em;
+    }
+
+    .about-us > p {
+        width: 80%;
+        font-size: 1.2em;
+        margin-top: 1.5em;
+        left: 10%;
+    }
+
+    .slider-nav {
+        display: none;
+    }
+
+    .join-us {
+        margin: 4em;
+    }
+
+    .join-us.title {
+        margin-bottom: 3em;
+    }
+
+    .join-us hr {
+        left: 37%;
+    }
+
+    .join-us.buttons {
+        margin: 5em 2em 3em 2em;
+    }
+
+    .register, .login {
+        font-size: 1.2em;
+        padding: 0.4em;
+        margin-right: 1.5em;
+    }
+
+    footer > span {
+        font-size: 1.1em;
+    }
+}
+
+/* For screens between 1024px and 1440px (tablets) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .home-title {
+        font-size: 3em;
+        margin: 4em auto 1em 2em;
+        position: relative;
+        left: 6%;
+    }
+
+    .about-us {
+        margin: 3em;
+    }
+
+    .about-us > hr {
+        width: 18%;
+        left: 42%;
+    }
+
+    .about-us > h2 {
+        font-size: 2.2em;
+        margin-top: 1.5em;
+    }
+
+    .about-us > p {
+        width: 80%;
+        font-size: 1.2em;
+        margin-top: 1.5em;
+        left: 10%;
+    }
+
+    .join-us {
+        margin: 4em;
+    }
+
+    .join-us.title {
+        margin-bottom: 3em;
+    }
+
+    .join-us hr {
+        left: 37%;
+    }
+
+    .join-us.buttons {
+        margin: 5em 2em 3em 2em;
+    }
+
+    .register, .login {
+        font-size: 1.2em;
+        padding: 0.4em;
+        margin-right: 1.5em;
+    }
+
+    footer > span {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 4000px) {
+    .slider-nav {
+        bottom: 10em;
+    }
+}

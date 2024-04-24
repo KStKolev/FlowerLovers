@@ -1,0 +1,20 @@
+﻿/*
+    filter container's form button
+*/
+
+.filter-container > form > button {
+    border: none;
+    border-radius: 4px;
+    background-color: greenyellow;
+    padding: 0.5em 2em; /* Adjust padding */
+    margin: 2em;
+    position: relative;
+    left: 8%;
+    transition: 500ms ease-in-out;
+}
+
+.filter-container > form > button:hover {
+    opacity: 0.8;
+    transition: 500ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}

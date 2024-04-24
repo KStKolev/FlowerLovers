@@ -1,0 +1,64 @@
+﻿/*
+    edit page container
+*/
+
+.edit-page-container {
+    border: 1px solid;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 15em;
+    position: relative;
+    top: 9em;
+}
+
+.edit-page-container > h1 {
+    margin: 0.5em;
+    text-align: center;
+}
+
+/*
+    filter header and footer pagination
+*/
+
+.filter-header-pagination, .filter-footer-pagination {
+    width: max-content;
+    margin: 5em;
+    position: relative;
+    left: 34%;
+}
+
+.filter-header-pagination > a, .filter-footer-pagination > a {
+    border: none;
+    border-radius: 4px;
+    margin: 1em;
+    background-color: palegoldenrod;
+    padding: 2em;
+    transition: 300ms ease-in-out;
+}
+
+.filter-header-pagination > a:hover, .filter-footer-pagination > a:hover {
+    opacity: 0.8;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*
+    filter current page pagination
+*/
+
+.filter-current-page-header {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    bottom: 7.7em;
+    left: 95%;
+}
+
+.filter-current-page-footer {
+    user-select: none;
+    font-size: 2em;
+    position: relative;
+    left: 95%;
+    bottom: 0.5em
+}
+

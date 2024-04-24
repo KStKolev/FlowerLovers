@@ -1,20 +1,28 @@
 ﻿@model EditAccountModel
 
 <section class="edit-account-section">
-    <h1>Edit Account</h1>
-    <hr/>
-    <div class="edit-account-form">
-        <form asp-action="Edit" asp-controller="Account" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="image-edit-container">
-                <input asp-for="ImageFile" class="form-control" placeholder="Image file" aria-required="true" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
+    <div class="container">
+        <h1>Edit Account</h1>
+        <hr />
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="edit-account-form">
+                    <form asp-action="Edit" asp-controller="Account" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label for="ImageFile">Image File</label>
+                            <input asp-for="ImageFile" class="form-control" id="ImageFile" placeholder="Image file" aria-required="true" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Biography">Biography</label>
+                            <textarea asp-for="Biography" class="form-control" id="Biography" placeholder="Biography" rows="4" cols="50"></textarea>
+                            <span asp-validation-for="Biography" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </div>
             </div>
-            <div class="biography-edit-container">
-                <textarea asp-for="Biography" placeholder="Biography" rows="4" cols="50"></textarea>
-                <span asp-validation-for="Biography" class="text-danger"></span>
-            </div>
-            <button type="submit">EDIT</button>
-        </form>
+        </div>
     </div>
 </section>

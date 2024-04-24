@@ -1,5 +1,6 @@
 ﻿using FlowerLovers.Core.Contracts.ArticleServices;
 using FlowerLovers.Core.CustomExceptions;
+using FlowerLovers.Core.CustomExceptions.DataConstants;
 using FlowerLovers.Core.Services.ArticleServices.Models;
 using FlowerLovers.Data.Data;
 using FlowerLovers.Data.Data.Models;
@@ -24,7 +25,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (isFalseArticleId == false)
             {
-                throw new ArgumentException();
+                throw new ArgumentException(nameof(articleId));
             }
 
             if (userId == null)
@@ -38,7 +39,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (user == null)
             {
-                throw new UserNullException(nameof(user));
+                throw new UserNullException(UserDataConstants.USER_NULL_MESSAGE);
             }
 
             var userAccount = await data
@@ -47,7 +48,7 @@ namespace FlowerLovers.Core.Services.ArticleServices
 
             if (userAccount == null) 
             {
-                throw new UserAccountNullException(nameof(userAccount));
+                throw new UserAccountNullException(UserAccountDataConstants.USER_ACCOUNT_ERROR_MESSAGE);
             }
 
             var rateToAdd = new Rate()

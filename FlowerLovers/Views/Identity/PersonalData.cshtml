@@ -1,14 +1,18 @@
 ﻿<section class="personal-data-container">
-    <h1>
-        Personal Data
-    </h1>
-    <hr/>
-    <div class="personal-data-content">
-        <p>Your account contains personal data that you have given us. This page allows you delete that data.</p>
-        <p>
-            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
-        </p>
-        <a id="delete" asp-action="DeletePersonalData" asp-controller="Identity">Delete</a>
+    <h1 class="text-center">Personal Data</h1>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="personal-data-content">
+                    <p>Your account contains personal data that you have given us. This page allows you delete that data.</p>
+                    <p>
+                        <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+                    </p>
+                    <a id="delete" asp-action="DeletePersonalData" asp-controller="Identity" class="btn btn-danger btn-lg btn-block">Delete</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
