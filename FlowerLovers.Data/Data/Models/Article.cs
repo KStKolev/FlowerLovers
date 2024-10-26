@@ -32,12 +32,6 @@ namespace FlowerLovers.Data.Data.Models
         public DateTime DateOfPublish { get; set; }
 
         [Required]
-        [Display(Name = "Category ID")]
-        public int CategoryId { get; set; }
-        [ForeignKey(nameof(CategoryId))]
-        public Category Category { get; set; } = null!;
-
-        [Required]
         [Display(Name = "Image URL")]
 
         public string ImageUrl { get; set; } = string.Empty;

@@ -1,5 +1,4 @@
-﻿using FlowerLovers.Core.CustomAttributes.Category;
-using FlowerLovers.Core.CustomAttributes.Content;
+﻿using FlowerLovers.Core.CustomAttributes.Content;
 using FlowerLovers.Core.CustomAttributes.Image;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
@@ -20,11 +19,6 @@ namespace FlowerLovers.Core.Services.ArticleServices.Models
 
         [MaxContentLength(1000)]
         public string Content { get; set; } = string.Empty;
-
-        [CategoryName]
-        public string Category { get; set; } = string.Empty;
-
-        public int CategoryId { get; set; }
 
         [Display(Name = "Image file")]
         [MaxImageResolution(4)]

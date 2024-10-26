@@ -11,11 +11,11 @@ using FlowerLovers.Core.Services.ApplicationUserService;
 using FlowerLovers.Core.Services.ArticleServices;
 using FlowerLovers.Core.Services.IdentityServices;
 using FlowerLovers.Core.Services.SearchServices;
+using FlowerLovers.Data.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DB context
-builder.Services.AddApplicationDbContext(builder.Configuration);
+builder.Services.AddDbContext<FlowerLoversDbContext>();
 
 // Add Identity
 
@@ -29,8 +29,6 @@ builder.Services.AddTransient<IResetPasswordService, ResetPasswordService>();
 builder.Services.AddTransient<IForgotPasswordService, ForgotPasswordService>();
 builder.Services.AddTransient<ILogOutService, LogOutService>();
 builder.Services.AddTransient<IChangePasswordService, ChangePasswordService>();
-builder.Services.AddTransient<IPersonalDataService, PersonalDataService>();
-builder.Services.AddTransient<IDeletePersonalDataService, DeletePersonalDataService>();
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IEditAccountService, EditAccountService>();
 builder.Services.AddTransient<IAddArticleService, AddArticleService>();
@@ -44,7 +42,6 @@ builder.Services.AddTransient<IEditArticleService, EditArticleService>();
 builder.Services.AddScoped<AdminFilter>();
 builder.Services.AddTransient<IDeleteArticleService, DeleteArticleService>();
 builder.Services.AddTransient<IDeleteUserService, DeleteUserService>();
-builder.Services.AddTransient<IFilterArticlesService, FilterArticlesService>();
 builder.Services.AddTransient<ISearchArticleService, SearchArticleService>();
 
 

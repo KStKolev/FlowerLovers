@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <Compile Remove="Services\ApplicationUserServices\**" />
+    <Compile Remove="Services\SearchServices\Models\**" />
     <EmbeddedResource Remove="Services\ApplicationUserServices\**" />
+    <EmbeddedResource Remove="Services\SearchServices\Models\**" />
     <None Remove="Services\ApplicationUserServices\**" />
+    <None Remove="Services\SearchServices\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FlowerLovers.Data\FlowerLovers.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\SearchServices\Models\" />
   </ItemGroup>
 
 </Project>

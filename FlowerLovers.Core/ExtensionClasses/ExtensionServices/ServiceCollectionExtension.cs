@@ -12,17 +12,6 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddApplicationDbContext(this IServiceCollection services, IConfiguration config)
-        {
-            var connectionString = config.GetConnectionString("DefaultConnection");
-            services.AddDbContext<FlowerLoversDbContext>(options =>
-                options.UseSqlServer(connectionString));
-
-            services.AddDatabaseDeveloperPageExceptionFilter();
-
-            return services;
-        }
-
         public static IServiceCollection AddApplicationIdentity(this IServiceCollection services)
         {
             services.AddDefaultIdentity<ApplicationUser>(

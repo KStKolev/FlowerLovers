@@ -1,5 +1,6 @@
 ﻿#nullable disable
 
+using FlowerLovers.Core.Contracts.AccountService;
 using FlowerLovers.Core.Contracts.IdentityServices;
 using FlowerLovers.Core.Services.IdentityServices.Models;
 using FlowerLovers.Data.Data.Models;
@@ -14,16 +15,19 @@ namespace FlowerLovers.Core.Services.IdentityServices
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IUserStore<ApplicationUser> _userStore;
+        private readonly IAccountService _accountService;
 
         public RegisterService(
                 UserManager<ApplicationUser> userManager,
                 IUserStore<ApplicationUser> userStore,
-                SignInManager<ApplicationUser> signInManager
+                SignInManager<ApplicationUser> signInManager,
+                IAccountService accountService
             )
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
+            _accountService = accountService;
         }
 
         public async Task<IActionResult> OnPostAsync(RegisterModel model)
@@ -33,12 +37,12 @@ namespace FlowerLovers.Core.Services.IdentityServices
             UserStoreExtension.SetUserEmail(user, model.Email);
             string fullName = model.FirstName + model.LastName;
             await _userStore.SetUserNameAsync(user, fullName, CancellationToken.None);
-                
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
+                await _accountService.CreateUserAccount(user.Id);
                 return RedirectToAction("Register", "Identity");
             }
             foreach (var error in result.Errors)

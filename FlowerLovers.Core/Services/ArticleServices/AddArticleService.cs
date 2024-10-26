@@ -47,22 +47,12 @@ namespace FlowerLovers.Core.Services.ArticleServices
                 throw new ImageNullException(ImageDataConstants.IMAGE_MESSAGE_ERROR);
             }
 
-            var category = await data
-                .Categories
-                .FirstOrDefaultAsync(c => c.Name == model.Category);
-
-            if (category == null)
-            {
-                throw new CategoryNullException();
-            }
-
             var newArticle = new Article()
             {
                 Title = model.Title,
                 Content = model.Content,
                 UserAccountId = userAccount.Id,
                 DateOfPublish = FormattedDateOfCreation(),
-                CategoryId = category.Id,
                 ImageUrl = imagePath
             };
 

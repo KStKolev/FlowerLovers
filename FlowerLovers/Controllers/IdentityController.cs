@@ -2,7 +2,6 @@
 using FlowerLovers.Core.Services.IdentityServices.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 using System.Security.Claims;
 
 namespace FlowerLovers.Web.Controllers
@@ -15,17 +14,13 @@ namespace FlowerLovers.Web.Controllers
         private readonly IForgotPasswordService forgotPasswordService;
         private readonly ILogOutService logOutService;
         private readonly IChangePasswordService changePasswordService;
-        private readonly IPersonalDataService personalDataService;
-        private readonly IDeletePersonalDataService deletePersonalDataService;
 
         public IdentityController(IRegisterService _registerService,
                 ILogInService _logInService,
                 IResetPasswordService _resetPasswordService,
                 IForgotPasswordService _forgotPasswordService,
                 ILogOutService _logOutService,
-                IChangePasswordService _changePasswordService,
-                IPersonalDataService _personalDataService,
-                IDeletePersonalDataService _deletePersonalDataService
+                IChangePasswordService _changePasswordService
             )
         {
             registerService = _registerService;
@@ -34,8 +29,6 @@ namespace FlowerLovers.Web.Controllers
             forgotPasswordService = _forgotPasswordService;
             logOutService = _logOutService;
             changePasswordService = _changePasswordService;
-            personalDataService = _personalDataService;
-            deletePersonalDataService = _deletePersonalDataService;
         }
 
         //Register 
@@ -151,36 +144,6 @@ namespace FlowerLovers.Web.Controllers
             string userId = User.UserId();
             await changePasswordService.OnPostAsync(model, userId);
             return RedirectToAction("MainPage", "Article");
-        }
-
-        // Get to personal data.
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> PersonalData() 
-        {
-            string userId = User.UserId();
-            await personalDataService.OnGetAsync(userId);
-            return View();
-        }
-
-        // Delete personal data.
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> DeletePersonalData() 
-        {
-            DeletePersonalDataModel model = new DeletePersonalDataModel();
-            string userId = User.UserId();
-            await deletePersonalDataService.OnGetAsync(model, userId);
-            return View(model);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> DeletePersonalData(DeletePersonalDataModel model)
-        {
-            string userId = User.UserId();
-            await deletePersonalDataService.OnPostAsync(model, userId);
-            return RedirectToAction(nameof(Index), "Home");
         }
     }
 }

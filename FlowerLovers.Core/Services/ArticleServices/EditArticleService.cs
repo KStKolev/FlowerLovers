@@ -51,7 +51,6 @@ namespace FlowerLovers.Core.Services.ArticleServices
                 Title = articleToEdit.Title,
                 ImageUrl = articleToEdit.ImageUrl,
                 Content = articleToEdit.Content,
-                CategoryId = articleToEdit.CategoryId
             };
 
             if (editArticleModel == null)
@@ -88,19 +87,6 @@ namespace FlowerLovers.Core.Services.ArticleServices
             {
                 articleToEdit.Content = model.Content;
             }
-
-            if (model.Category != null)
-            {
-                var category = await data
-                    .Categories
-                    .FirstOrDefaultAsync(c => c.Name == model.Category);
-
-                if (category != null)
-                {
-                    articleToEdit.CategoryId = category.Id;
-                }
-            }
-
             await data.SaveChangesAsync();
         }
 

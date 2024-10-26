@@ -1,5 +1,4 @@
-﻿using FlowerLovers.Core.CustomAttributes.Category;
-using FlowerLovers.Core.CustomAttributes.Content;
+﻿using FlowerLovers.Core.CustomAttributes.Content;
 using FlowerLovers.Core.CustomAttributes.Image;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
@@ -28,9 +27,5 @@ namespace FlowerLovers.Core.Services.ArticleServices.Models
         [Required]
         [Display(Name = "Date Of Creation")]
         public DateTime CreationDate { get; set; }
-
-        [Required]
-        [CategoryName]
-        public string Category { get; set; } = string.Empty;
     }
 }

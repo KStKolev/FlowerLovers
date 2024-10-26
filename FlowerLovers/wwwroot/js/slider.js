@@ -1,6 +1,12 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    const images = document.querySelectorAll(".slider img");
-    const navLinks = document.querySelectorAll(".slider-nav a");
+    const sliderContainer = document.querySelector(".slider");
+    const images = sliderContainer ? sliderContainer.querySelectorAll("img") : null;
+    const navLinks = sliderContainer ? sliderContainer.querySelectorAll(".slider-nav a") : null;
+
+    if (!sliderContainer || !images || !navLinks) {
+        return;
+    }
+
     let currentIndex = 0;
     let intervalId;
 
@@ -19,6 +25,7 @@
     }
 
     navLinks.forEach(link => link.addEventListener("click", navClickHandler));
+
     function nextImage() {
         currentIndex = (currentIndex + 1) % images.length;
         showImage(currentIndex);

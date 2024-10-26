@@ -19,8 +19,6 @@ namespace FlowerLovers.Web.Controllers
         private readonly IDetailsArticleService detailsArticleService;
         private readonly IRateService rateService;
         private readonly IEditArticleService editArticleService;
-        private readonly IFilterArticlesService filterArticlesService;
-
         public ArticleController(
             IAddArticleService _addArticleService, 
             IArticleService _articleServices,
@@ -29,8 +27,7 @@ namespace FlowerLovers.Web.Controllers
             ILeaveArticleService _leaveService,
             IDetailsArticleService _detailsArticleService,
             IRateService _rateService,
-            IEditArticleService _editArticleService,
-            IFilterArticlesService _filterArticlesService)
+            IEditArticleService _editArticleService)
         {
             addArticleService = _addArticleService;
             articleServices = _articleServices;
@@ -40,7 +37,6 @@ namespace FlowerLovers.Web.Controllers
             detailsArticleService = _detailsArticleService;
             rateService = _rateService;
             editArticleService = _editArticleService;
-            filterArticlesService = _filterArticlesService;
         }
 
         [HttpGet]
